@@ -4,12 +4,15 @@
 **Broader Stakeholders:** Tabletop masters, players, and general gaming communities.  
 **Key Requirements:**
 
-* **Dice Rolling:** Supports multiple dice types and combinations (e.g., d4, d6, d8, d10, d12, d20) with custom roll macros for complex actions.  
-* **Session Management:** Tracks and logs dice rolls with timestamps, allowing players to review session history and export roll data.  
-* **Custom Presets:** Players can save roll presets and game-specific configurations for future use.  
-* **User Accounts:** Provides user authentication to save profiles, custom rolls, and session histories.  
-* **Statistics & Analytics:** Displays dice roll statistics and outcomes, helping players analyze their luck and strategy.  
 * **User Interface:** A clean, customizable interface with themes, dice skins, and immersive sound effects.
+* **Dice Rolling:** Supports multiple dice types and combinations (e.g., d4, d6, d8, d10, d12, d20) with custom roll macros for complex actions.  
+
+* **User Accounts:** Provides user authentication to save profiles, custom rolls, and session histories.
+* * **Custom Presets:** Players can save roll presets and game-specific configurations for future use.  
+* **Statistics & Analytics:** Displays dice roll statistics and outcomes, helping players analyze their luck and strategy.  
+* **Session Management:** Tracks and logs dice rolls with timestamps, allowing players to review session history and export roll data.
+
+* possible further implement
 
 Feature Description 
 <**Graphical User Interface (GUI)** >
@@ -35,7 +38,6 @@ Feature Description
 | **Custom Dice Combinations** | Allow users to input combinations of dice (e.g., 2d10 \+ 1d20) and add modifiers. |
 | **Roll History** | Display a history of rolls with timestamps and results for tracking during a session. |
 
-| **Additional Functionalities** |
 
  **Game Mode Selection** | Let users choose preset rules based on their game of choice (e.g., D\&D 5e, Pathfinder). |
 | **Sound Effects** | Add immersive sound effects for dice rolls to enhance gameplay atmosphere. |
