@@ -13,10 +13,10 @@
     <TextField fx:id="tbxInput" text="Enter Input Command"/>
     
     <!-- Roll Button -->
-    <Button fx:id="btnReroll" text="Roll" onAction="#handleButtonClick"/>
+    <Button fx:id="btnReroll" text="Roll" onAction="#handleRollClick"/>
 
     <!-- single six Label -->
-    <Button fx:id="btnRollSingleDie" text="Roll a Single 6-sided Die" onAction="#rollDice"/>
+    <Button fx:id="btnRollSingleDie" text="Roll a Single 6-sided Die" onAction="#rollSixSided"/>
     
     <!-- Result Label -->
     <Label fx:id="lblRollText" text="Roll to start"/>

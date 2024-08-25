@@ -25,15 +25,16 @@ public class DiceRoller {
     private int roll;
 
     @FXML
-    public void handleButtonClick() {
+    public void handleRollClick() {
         try {
             lblRollText.setText(DiceRollerOutput(tbxInput.getText()));
         } catch (Exception expt) {
             lblRollText.setText("Invalid Input. Please try again (but better this time).");
         }
     }
+
     // test rolling a 6 sided die with button
-    public void rollDice() {
+    public void rollSixSided() {
         Random random = new Random();
         roll = random.nextInt(6) + 1; // roll a number between 1 and 6
         sayDice(roll);
