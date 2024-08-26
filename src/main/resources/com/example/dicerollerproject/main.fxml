@@ -26,7 +26,7 @@
     <Button fx:id="btnRollSingleDie" text="Roll a Single 6-sided Die" onAction="#rollSixSided"/>
 
     <MediaView fx:id="mediaView"/>
-    <Button text ="Immerse Yourself" onAction="playSound"/>
+    <Button text ="Immerse Yourself" onAction="#playSound"/>
     
     <!-- Result Label -->
     <Label fx:id="lblRollText" text="Roll to start"/>
