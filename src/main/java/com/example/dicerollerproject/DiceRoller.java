@@ -44,6 +44,21 @@ public class DiceRoller {
         playSound();
 
     }
+
+    private void bonusTrumpet() {
+        try {
+            String filename = "win.mp3";
+            String fileURI = getClass().getResource(filename).toURI().toString();
+            if (fileURI != null) {
+                Media media = new Media(fileURI);
+                MediaPlayer player = new MediaPlayer(media);
+                player.play();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            lblRollText.setText("Failed to load sound.");
+        }
+    }
     
     @FXML
     private void playSound() {
@@ -64,6 +79,11 @@ public class DiceRoller {
                 Media media = new Media(fileURI);
                 MediaPlayer player = new MediaPlayer(media);
                 player.play();
+            }
+            Random random2 = new Random();
+            int roll2 = random2.nextInt(100) + 1;
+            if (roll2 == 99) {
+                bonusTrumpet();
             }
     
         } catch (Exception e) {
