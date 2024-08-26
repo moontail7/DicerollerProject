@@ -5,23 +5,26 @@
 
 <VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.dicerollerproject.DiceRoller">
-    
+
     <!-- Instructions Label -->
     <Label text="Enter a command in the format 'XdY+N' to roll the dice (e.g., 2d6+3)."/>
-    
-    <!-- Input Field -->
-    <TextField fx:id="tbxInput" text="Enter Input Command"/>
-    
-    <!-- Roll Button -->
-    <Button fx:id="btnReroll" text="Roll" onAction="#handleRollClick"/>
 
-    <!-- single six Label -->
-    <Button fx:id="btnRollSingleDie" text="Roll a Single 6-sided Die" onAction="#rollSixSided"/>
-    
-    <!-- Result Label -->
-    <Label fx:id="lblRollText" text="Roll to start"/>
+    <!-- Input Textbox -->
+    <TextField fx:id="tbxInput"
+               text="Enter Input Command"
+               maxWidth="400"/>
 
+    <!-- Button Roll -->
+    <Button fx:id="btnRollDice"
+            text="Roll"
+            onAction="#btnRollDiceClick"/>
 
+    <!-- Roll Single Six Button -->
+    <Button fx:id="btnRollSingleDie"
+            text="Roll a Single 6-sided Die"
+            onAction="#btnRollSingleDieClick"/>
 
-    
+    <!-- Single Six Result Label -->
+    <Label fx:id="lblRollText"
+           text="Roll to start"/>
 </VBox>
