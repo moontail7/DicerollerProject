@@ -9,7 +9,6 @@ import javafx.scene.media.MediaView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -43,23 +42,36 @@ public class DiceRoller {
             lblRollText.setText("Invalid Input. Please try again (but better this time).");
         }
         playSound();
-    }
 
+    }
+    
     @FXML
     private void playSound() {
+        // method to play a sound 
+        // rolls a die from 1-9 to select filename 
         try {
-            String filename = getClass()
-                    .getResource("/com/example/dicerollerproject/dice-142528.mp3")
+            Random random = new Random();
+            roll = random.nextInt(9) + 1;
+            String filename = String.format("%d.wav", roll);
+
+            String fileURI = getClass()
+
+                    .getResource(filename)
                     .toURI()
                     .toString();
-            Media media = new Media(filename);
-            MediaPlayer player = new MediaPlayer(media);
-            player.play();  // Play the sound
+            
+            if (fileURI != null) {
+                Media media = new Media(fileURI);
+                MediaPlayer player = new MediaPlayer(media);
+                player.play();
+            }
+    
         } catch (Exception e) {
             e.printStackTrace();
             lblRollText.setText("Failed to load sound.");
         }
     }
+    
 
     // test rolling a 6 sided die with button
     public void rollSixSided() {
