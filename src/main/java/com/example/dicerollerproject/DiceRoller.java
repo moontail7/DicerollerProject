@@ -9,89 +9,76 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class DiceRoller {
+    @FXML private Label lblRollText;
+    //Main output of the input arguments
+    @FXML private TextField tbxInput;
+    //text box for main input
+    @FXML private Button btnRollDice;
+    //Main button used for rolling the input arguments from tbxInput
+    @FXML private Button btnRollSingleDie;
+    //btn used to roll a single d6
+    //^^ Initializes the interface screen elements so they can be referenced (and altered) later
 
     @FXML
-    private Label lblRollText;
-
-    @FXML
-    private TextField tbxInput;
-
-    @FXML
-    private Button btnReroll;
-
-    @FXML
-    private Button btnRollSingleDie;
-
-    private int roll;
-
-    @FXML
-    public void handleRollClick() {
+    public void btnRollDiceClick() {
+        //event
         try {
-            lblRollText.setText(DiceRollerOutput(tbxInput.getText()));
+            lblRollText.setText(MainDiceRoller(tbxInput.getText()));
         } catch (Exception expt) {
             lblRollText.setText("Invalid Input. Please try again (but better this time).");
         }
     }
-
-    // test rolling a 6 sided die with button
-    public void rollSixSided() {
+    //(below) test rolling a 6 sided die with button
+    public void btnRollSingleDieClick() {
         Random random = new Random();
-        roll = random.nextInt(6) + 1; // roll a number between 1 and 6
-        sayDice(roll);
-    }
-
-    // Method to display the rolled dice value
-    private void sayDice(int roll) {
+        int roll = random.nextInt(6) + 1;
+        //roll a number between 1 and 6
         lblRollText.setText("You rolled a " + roll + "!");
+        //display the roll of the d6 on the lbl
     }
 
-    private static String DiceRollerOutput(String input) {
+    private static String MainDiceRoller(String input) {
         String output = "Results: ";
         int total = 0;
         int modifierTotal = 0;
-        // setup default Variables
+        //setup default Variables
 
         String[] InputArguments = input.split("\\+");
-        // Get the first argument entered (the only one) and splits it along the '+'
+        //Get the first argument entered (the only one) and splits it along the '+'
         for (int n = 0; n < InputArguments.length; n++) {
             if (InputArguments[n].contains("d")) {
-                // if the argument demands we roll dice
+                //if the argument demands we roll dice
                 int diceCount = Integer.parseInt(InputArguments[n].split("d")[0]);
                 int diceSides = Integer.parseInt(InputArguments[n].split("d")[1]);
-                // gather information in separate variables
+                //gather information in separate variables
                 output = output + diceSides + "-sided dice; ";
-                // append the number of sides of the dice to the output string
+                //append the number of sides of the dice to the output string
                 for (int k = 0; k < diceCount; k++) {
                     int rollResult = ThreadLocalRandom.current().nextInt(1, diceSides + 1);
                     output = output + rollResult + ", ";
-                    // roll the dice randomly and add that value to the output line
+                    //roll the dice randomly and add that value to the output line
                     total += rollResult;
-                    // add the roll to the total
+                    //add the roll to the total
                 }
 
-                // Remove trailing ", " and add ". "
+                //Remove trailing ", " and add ". "
                 output = output.substring(0, output.length() - 2) + ". ";
 
             } else {
-                // Modifier case
+                //Modifier case
                 int modifier = Integer.parseInt(InputArguments[n]);
                 modifierTotal += modifier;
-                // save the modifier total to add at the end (if there is multiple modifiers
-                // they will be combined)
+                //save the modifier total to add at the end (if there is multiple modifiers
+                //they will be combined)
 
                 total += modifier;
             }
         }
-
         if (modifierTotal != 0) {
             output = output + "Modifier: " + modifierTotal + ". ";
         }
-
+        //only add the modifier in the output, if a modifier was entered
         output = output + "Total: " + total + ".";
         return output;
     }
-
-
-  
 }
-
