@@ -5,6 +5,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import javafx.scene.media.MediaView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -22,7 +27,13 @@ public class DiceRoller {
     @FXML
     private Button btnRollSingleDie;
 
+    @FXML
+    private Button btnRollSound;
+
     private int roll;
+
+    @FXML
+    private MediaView mediaView;
 
     @FXML
     public void handleRollClick() {
@@ -31,6 +42,23 @@ public class DiceRoller {
         } catch (Exception expt) {
             lblRollText.setText("Invalid Input. Please try again (but better this time).");
         }
+        playSound();
+    }
+
+    @FXML
+    private void playSound() {
+        try {
+            String filename = getClass()
+                    .getResource("/com/example/dicerollerproject/dice-142528.mp3")
+                    .toURI()
+                    .toString();
+            Media media = new Media(filename);
+            MediaPlayer player = new MediaPlayer(media);
+            player.play();  // Play the sound
+        } catch (Exception e) {
+            e.printStackTrace();
+            lblRollText.setText("Failed to load sound.");
+        }
     }
 
     // test rolling a 6 sided die with button
@@ -38,6 +66,7 @@ public class DiceRoller {
         Random random = new Random();
         roll = random.nextInt(6) + 1; // roll a number between 1 and 6
         sayDice(roll);
+        playSound();
     }
 
     // Method to display the rolled dice value
@@ -91,7 +120,4 @@ public class DiceRoller {
         return output;
     }
 
-
-  
 }
-
