@@ -24,8 +24,13 @@ public class Main extends Application {
         Window.setHeight(screenHeight/2);
         //Retrieve screen dimensions and set window to half the size
 
-        Window.setScene(new Scene(root, 6, 4));
-        //ngl doesnt know what this does but its VERY important
+        Window.setScene(new Scene(root, 600, 400));
+        //ngl don't know what this does but its VERY important (breaks without it)
+        //^^ Creates the window (without showing it)?
+
+        //Window.getScene().getStylesheets().add("/com/example/dicerollerproject/StyleSheet.css");
+        //^^ this does not add the stylesheet unsure why (assuming the css exists)
+        //also I spent way too much time trying to get this to work (it's a time sink)
 
         Window.show();
         //shows the window to the user
