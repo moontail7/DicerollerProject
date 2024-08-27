@@ -3,28 +3,177 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.dicerollerproject.DiceRoller">
+<?import javafx.scene.layout.HBox?>
+<VBox alignment="CENTER"
+      spacing="10.0"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.dicerollerproject.DiceRoller"
+      style="-fx-background-color: linear-gradient(to right, #0d1c5d, #891215);">
+    <!-- Title Label -->
+    <Label text="Dice Roller - Java Beta V1.2"
+           style="
+           -fx-background-color: #a71e21;
+           -fx-alignment: center;
+           -fx-padding: 10 100 10 100;
+           -fx-text-fill: black;
+           -fx-background-radius: 10px;
+           -fx-border-radius: 10px;
+           -fx-font-size: 25px;
+           -fx-font-family: Arial, 'Helvetica', sans-serif;
+           -fx-margin-bottom: 100;"
+            />
 
     <!-- Instructions Label -->
-    <Label text="Enter a command in the format 'XdY+N' to roll the dice (e.g., 2d6+3)."/>
+    <Label text="Enter a command in the format 'XdY+N' to roll the dice (e.g., 2d6+3)."
+           maxWidth="600"
+           style="
+           -fx-background-color: yellow;
+           -fx-alignment: center;
+           -fx-padding: 10;
+           -fx-text-fill: black;
+           -fx-background-radius: 10px;
+           -fx-border-radius: 10px;
+           -fx-font-size: 18px;
+           -fx-font-family: Arial, 'Helvetica', sans-serif;"
+            />
 
-    <!-- Input Textbox -->
-    <TextField fx:id="tbxInput"
-               text="Enter Input Command"
-               maxWidth="400"/>
+    <!-- Box to capture the main elements -->
+    <HBox spacing="3.0"
+          alignment="BOTTOM_CENTER"
+          maxHeight="150"
+          prefHeight="150"
+          minHeight="80">
 
-    <!-- Button Roll -->
-    <Button fx:id="btnRollDice"
-            text="Roll"
-            onAction="#btnRollDiceClick"/>
 
-    <!-- Roll Single Six Button -->
-    <Button fx:id="btnRollSingleDie"
-            text="Roll a Single 6-sided Die"
-            onAction="#btnRollSingleDieClick"/>
+        <!-- Input Textbox -->
+        <TextField fx:id="tbxInput"
+                   maxWidth="600"
+                   prefWidth="550"
+                   style="
+                   -fx-background-color: #33a31d;
+                   -fx-padding: 10;
+                   -fx-background-radius: 10px;
+                   -fx-border-radius: 10px;-fx-font-size: 18px;
+                   -fx-font-family: Arial, 'Helvetica', sans-serif;"/>
+        <!-- Button Roll -->
+        <Button fx:id="btnRollDice"
+                text="Roll"
+                onAction="#btnRollDiceClick"
+                style="
+                -fx-background-color: #2e6dd8;
+                -fx-underline: true;
+                -fx-padding: 10;
+                -fx-background-radius: 10px;
+                -fx-border-radius: 10px;
+                -fx-font-size: 18px;
+                -fx-font-family: Arial, 'Helvetica', sans-serif;"
+                />
+    </HBox>
+    <HBox spacing="3.0"
+          alignment="TOP_CENTER"
+          maxHeight="150"
+          prefHeight="150"
+          minHeight="80">
+        <!-- 'QuickInput' Single d4 Button-->
+        <Button fx:id="btnQISingleD4"
+                text="Add a d4"
+                mnemonicParsing="false"
+                onAction="#btnQISingleD4Click"
+                style="
+                -fx-background-color: #2e6dd8;
+                -fx-underline: true;
+                -fx-padding: 10;
+                -fx-background-radius: 10px;
+                -fx-border-radius: 10px;
+                -fx-font-size: 18px;
+                -fx-font-family: Arial, 'Helvetica', sans-serif;"
+        />
+        <!-- 'QuickInput' Single d6 Button-->
+        <Button fx:id="btnQISingleD6"
+                text="Add a d6"
+                mnemonicParsing="false"
+                onAction="#btnQISingleD6Click"
+                style="
+                -fx-background-color: #2e6dd8;
+                -fx-underline: true;
+                -fx-padding: 10;
+                -fx-background-radius: 10px;
+                -fx-border-radius: 10px;
+                -fx-font-size: 18px;
+                -fx-font-family: Arial, 'Helvetica', sans-serif;"
+        />
+        <!-- 'QuickInput' Single d8 Button-->
+        <Button fx:id="btnQISingleD8"
+                text="Add a d8"
+                mnemonicParsing="false"
+                onAction="#btnQISingleD8Click"
+                style="
+                -fx-background-color: #2e6dd8;
+                -fx-underline: true;
+                -fx-padding: 10;
+                -fx-background-radius: 10px;
+                -fx-border-radius: 10px;
+                -fx-font-size: 18px;
+                -fx-font-family: Arial, 'Helvetica', sans-serif;"
+        />
+        <!-- 'QuickInput' Single d10 Button-->
+        <Button fx:id="btnQISingleD10"
+                text="Add a d10"
+                mnemonicParsing="false"
+                onAction="#btnQISingleD10Click"
+                style="
+                -fx-background-color: #2e6dd8;
+                -fx-underline: true;
+                -fx-padding: 10;
+                -fx-background-radius: 10px;
+                -fx-border-radius: 10px;
+                -fx-font-size: 18px;
+                -fx-font-family: Arial, 'Helvetica', sans-serif;"
+        />
+        <!-- 'QuickInput' Single d12 Button-->
+        <Button fx:id="btnQISingleD12"
+                text="Add a d12"
+                mnemonicParsing="false"
+                onAction="#btnQISingleD12Click"
+                style="
+                -fx-background-color: #2e6dd8;
+                -fx-underline: true;
+                -fx-padding: 10;
+                -fx-background-radius: 10px;
+                -fx-border-radius: 10px;
+                -fx-font-size: 18px;
+                -fx-font-family: Arial, 'Helvetica', sans-serif;"
+        />
+        <!-- 'QuickInput' Single d20 Button-->
+        <Button fx:id="btnQISingleD20"
+                text="Add a d20"
+                mnemonicParsing="false"
+                onAction="#btnQISingleD20Click"
+                style="
+                -fx-background-color: #2e6dd8;
+                -fx-underline: true;
+                -fx-padding: 10;
+                -fx-background-radius: 10px;
+                -fx-border-radius: 10px;
+                -fx-font-size: 18px;
+                -fx-font-family: Arial, 'Helvetica', sans-serif;"
+        />
+    </HBox>
 
-    <!-- Single Six Result Label -->
+    <!-- Result Label -->
     <Label fx:id="lblRollText"
-           text="Roll to start"/>
+           text="Roll to start"
+           maxWidth="600"
+           wrapText="true"
+           textAlignment="CENTER"
+           style="
+           -fx-background-color: yellow;
+           -fx-alignment: center;
+           -fx-padding: 10;
+           -fx-background-radius: 10px;
+           -fx-border-radius: 10px;
+           -fx-font-size: 18px;
+           -fx-font-family: Arial, 'Helvetica', sans-serif;
+           "/>
 </VBox>
