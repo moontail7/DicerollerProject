@@ -8,10 +8,11 @@
       spacing="10.0"
       xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.dicerollerproject.DiceRoller"
+      fx:controller="com.example.dicerollerproject.DiceRollerController"
       style="-fx-background-color: linear-gradient(to right, #0d1c5d, #891215);">
+
     <!-- Title Label -->
-    <Label text="Dice Roller - Java Beta V1.2"
+    <Label text="Dice Roller (Java Beta V1.4)" alignment="CENTER"
            style="
            -fx-background-color: #a71e21;
            -fx-alignment: center;
