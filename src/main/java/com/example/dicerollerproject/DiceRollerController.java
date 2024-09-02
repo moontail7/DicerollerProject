@@ -6,11 +6,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class DiceRoller {
+public class DiceRollerController {
     @FXML private Label lblRollText;
+    //Main output of the input arguments
+    @FXML public static Button btnProfile;
     //Main output of the input arguments
     @FXML private TextField tbxInput;
     //text box for main input
@@ -20,13 +21,12 @@ public class DiceRoller {
     //btn used to roll a single d6
     //^^ Initializes the interface screen elements so they can be referenced (and altered) later
 
-
     @FXML
     public void btnRollDiceClick() {
         //event
         try {
             lblRollText.setText(MainDiceRoller(tbxInput.getText()));
-        } catch (Exception expt) {
+        } catch (Exception e) {
             lblRollText.setText("Invalid Input. Please try again (but better this time).");
         }
     }
