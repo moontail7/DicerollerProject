@@ -18,10 +18,22 @@ public class LoginController {
     @FXML private Button btnRegister;
     //initial instructions and feedback in case of errors
     @FXML private Label lblInstructions;
+    //hold da user
+    // @FXML private Label lblWelcome;
 
     //create priv connection to DB
     private final Connection connection = DatabaseConnection.getInstance();
+    
 
+    public LoginController() {
+        System.out.println("LoginController constructor called");
+    }
+    
+    // @FXML
+    // public void initialize() {
+    //     System.out.println("LoginController initialized");
+    //     System.out.println("lblWelcome: " + lblWelcome); // This should not be null
+    // }
 
     // @FXML
     // private void initialize() {
@@ -38,8 +50,13 @@ public class LoginController {
         if (validateInput(enteredUsername, enteredPassword)) {
             if (isUserValid(enteredUsername, enteredPassword)) {
                 lblInstructions.setText("Login Success. Opening the Dice Roller app (ETA <1s).");
+                //pass the username to the UserSession class
+                UserSession.getInstance().setLoggedInUsername(enteredUsername);
+                // lblWelcome.setText("Welcome: " + enteredUsername);
+
                 //close the login window
                 btnLogin.getScene().getWindow().hide();
+
                 //open the main window
                 openMainWindow();
             } else {
@@ -127,7 +144,7 @@ public class LoginController {
     //method to show main window
     private void openMainWindow() {
         try {
-            Main.showMainScene(); 
+            Main.showMainScene(UserSession.getInstance().getLoggedInUsername()); 
         } catch (IOException e) {
             lblInstructions.setText("Error opening main window: " + e.getMessage());
             e.printStackTrace();

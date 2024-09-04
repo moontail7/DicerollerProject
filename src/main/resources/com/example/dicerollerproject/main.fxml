@@ -25,6 +25,21 @@
            -fx-margin-bottom: 100;"
             />
 
+    <!-- Welcome Person Label -->
+    <Label fx:id="lblWelcome"
+           text=" "
+           maxWidth="600"
+           style="
+           -fx-background-color: yellow;
+           -fx-alignment: center;
+           -fx-padding: 10;
+           -fx-text-fill: black;
+           -fx-background-radius: 10px;
+           -fx-border-radius: 10px;
+           -fx-font-size: 18px;
+           -fx-font-family: Arial, 'Helvetica', sans-serif;"/>
+
+
     <!-- Instructions Label -->
     <Label text="Enter a command in the format 'XdY+N' to roll the dice (e.g., 2d6+3)."
            maxWidth="600"

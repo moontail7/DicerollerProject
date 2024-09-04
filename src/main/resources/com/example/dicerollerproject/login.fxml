@@ -9,7 +9,7 @@
 
 <VBox alignment="CENTER"
       spacing="10.0"
-      xmlns="http://javafx.com/javafx/17"
+      xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.dicerollerproject.LoginController"
       style="-fx-background-color: linear-gradient(to right, #0d1c5d, #891215);">
@@ -26,6 +26,20 @@
            -fx-font-family: Arial, 'Helvetica', sans-serif;
            -fx-margin-bottom: 100;"
             />
+
+<!-- Welcome Person Label
+<Label fx:id="lblWelcome"
+       text="Welcome"
+       maxWidth="600"
+       style="
+       -fx-background-color: yellow;
+       -fx-alignment: center;
+       -fx-padding: 10;
+       -fx-text-fill: black;
+       -fx-background-radius: 10px;
+       -fx-border-radius: 10px;
+       -fx-font-size: 18px;
+       -fx-font-family: Arial, 'Helvetica', sans-serif;"/> -->
 
     <!-- Box to capture the Username elements -->
     <HBox spacing="3.0"

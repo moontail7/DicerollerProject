@@ -20,6 +20,7 @@ public class DiceRollerController {
     @FXML private Button btnRollSingleDie;
     //btn used to roll a single d6
     //^^ Initializes the interface screen elements so they can be referenced (and altered) later
+    @FXML private Label lblWelcome;
 
     @FXML
     public void btnRollDiceClick() {
@@ -29,6 +30,10 @@ public class DiceRollerController {
         } catch (Exception e) {
             lblRollText.setText("Invalid Input. Please try again (but better this time).");
         }
+    }
+
+    public void showLoggedinUser(String username) {
+        lblWelcome.setText("Welcome: " + username); // Display the logged-in username
     }
 
     public void btnQISingleD4Click(ActionEvent actionEvent) {
