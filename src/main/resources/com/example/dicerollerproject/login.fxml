@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER"
+      spacing="10.0"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.dicerollerproject.LoginController"
+      style="-fx-background-color: linear-gradient(to right, #0d1c5d, #891215);">
+    <!-- Title Label -->
+    <Label text="Dice Roller - Login Screen (Java Beta V1.4)"
+           style="
+           -fx-background-color: #a71e21;
+           -fx-alignment: center;
+           -fx-padding: 10 100 10 100;
+           -fx-text-fill: black;
+           -fx-background-radius: 10px;
+           -fx-border-radius: 10px;
+           -fx-font-size: 25px;
+           -fx-font-family: Arial, 'Helvetica', sans-serif;
+           -fx-margin-bottom: 100;"
+            />
+
+    <!-- Box to capture the Username elements -->
+    <HBox spacing="3.0"
+          alignment="BOTTOM_CENTER"
+          maxHeight="150"
+          prefHeight="150"
+          minHeight="80">
+
+        <!-- Adds extra blank space to the left, making the elements centered -->
+        <VBox.margin>
+            <Insets>
+                <left>70</left>
+            </Insets>
+        </VBox.margin>
+
+        <!-- Instructions Label -->
+        <Label text="Enter Username"
+               maxWidth="175"
+               minWidth="100"
+               alignment="CENTER_RIGHT"
+               style="
+           -fx-background-color: yellow;
+           -fx-alignment: center;
+           -fx-padding: 10;
+           -fx-text-fill: black;
+           -fx-background-radius: 10px;
+           -fx-border-radius: 10px;
+           -fx-font-size: 18px;
+           -fx-font-family: Arial, 'Helvetica', sans-serif;"
+        />
+
+        <!-- Input Textbox for Username -->
+        <TextField fx:id="tbxInputUsername"
+                   maxWidth="300"
+                   minWidth="100"
+                   alignment="CENTER_LEFT"
+                   style="
+                   -fx-background-color: #33a31d;
+                   -fx-padding: 10;
+                   -fx-background-radius: 10px;
+                   -fx-border-radius: 10px;-fx-font-size: 18px;
+                   -fx-font-family: Arial, 'Helvetica', sans-serif;"/>
+    </HBox>
+
+    <!-- Box to capture the password elements -->
+    <HBox spacing="3.0"
+          alignment="CENTER">
+
+        <!-- Adds extra blank space to the left, making the elements centered -->
+        <VBox.margin>
+            <Insets>
+                <left>70</left>
+            </Insets>
+        </VBox.margin>
+
+        <!-- Instructions Label -->
+        <Label text="Enter Password"
+               maxWidth="175"
+               minWidth="100"
+               alignment="CENTER_RIGHT"
+               style="
+           -fx-background-color: yellow;
+           -fx-alignment: center;
+           -fx-padding: 10;
+           -fx-text-fill: black;
+           -fx-background-radius: 10px;
+           -fx-border-radius: 10px;
+           -fx-font-size: 18px;
+           -fx-font-family: Arial, 'Helvetica', sans-serif;"
+        />
+
+        <!-- Input Textbox for Password -->
+        <TextField fx:id="tbxInputPassword"
+                   maxWidth="300"
+                   minWidth="100"
+                   alignment="CENTER_LEFT"
+                   style="
+                   -fx-background-color: #33a31d;
+                   -fx-padding: 10;
+                   -fx-background-radius: 10px;
+                   -fx-border-radius: 10px;-fx-font-size: 18px;
+                   -fx-font-family: Arial, 'Helvetica', sans-serif;"/>
+    </HBox>
+
+    <!-- box to contain the login/register buttons -->
+    <HBox spacing="3.0"
+          alignment="CENTER">
+        <!-- Button Submit Login Details -->
+        <Button fx:id="btnLogin"
+                text="Login"
+                onAction="#btnLogin"
+                style="
+                    -fx-background-color: #2e6dd8;
+                    -fx-underline: true;
+                    -fx-padding: 10;
+                    -fx-background-radius: 10px;
+                    -fx-border-radius: 10px;
+                    -fx-font-size: 18px;
+                    -fx-font-family: Arial, 'Helvetica', sans-serif;"
+        />
+        <!-- Button Submit Login Details -->
+        <Button fx:id="btnRegister"
+                text="Register"
+                onAction="#btnRegister"
+                style="
+                    -fx-background-color: #2e6dd8;
+                    -fx-underline: true;
+                    -fx-padding: 10;
+                    -fx-background-radius: 10px;
+                    -fx-border-radius: 10px;
+                    -fx-font-size: 18px;
+                    -fx-font-family: Arial, 'Helvetica', sans-serif;"
+        />
+    </HBox>
+    <Label fx:id="lblInstructions"
+           text="Enter your username and password to login/register"
+           maxWidth="600"
+           wrapText="true"
+           textAlignment="CENTER"
+           style="
+           -fx-background-color: yellow;
+           -fx-alignment: center;
+           -fx-padding: 10;
+           -fx-background-radius: 10px;
+           -fx-border-radius: 10px;
+           -fx-font-size: 18px;
+           -fx-font-family: Arial, 'Helvetica', sans-serif;
+           "/>
+</VBox>
