@@ -25,21 +25,6 @@ public class LoginController {
     private final Connection connection = DatabaseConnection.getInstance();
     
 
-    public LoginController() {
-        System.out.println("LoginController constructor called");
-    }
-    
-    // @FXML
-    // public void initialize() {
-    //     System.out.println("LoginController initialized");
-    //     System.out.println("lblWelcome: " + lblWelcome); // This should not be null
-    // }
-
-    // @FXML
-    // private void initialize() {
-    //     // Initialize any required data here if needed
-    // }
-
     @FXML
     public void btnLogin(ActionEvent actionEvent) {
         //Login Button behaviour
