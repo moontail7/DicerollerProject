@@ -1,61 +1,56 @@
 package com.example.dicerollerproject;
 
-import java.io.IOException;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Connection;
+import javafx.scene.Parent;
+import java.awt.*;
+import java.util.Objects;
 //^not being used currently but are used for one time executions, such as creating a table
+
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.util.Objects;
+import java.io.IOException;
+
+
+
 
 public class Main extends Application {
+
+    private static Stage primaryStage; // Make the stage static to access it from controllers
+
     @Override
-    public void start(Stage Window) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/dicerollerproject/login.fxml")));
-        //declares (and loads) the fxml file
+    public void start(Stage stage) throws IOException {
+        primaryStage = stage;  //base stage for the application
+        primaryStage.setTitle("Dice Roller");
 
-        Window.setTitle("Dice Roller");
-
-        int screenWidth = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-        int screenHeight = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-        Window.setWidth(screenWidth/2.0);
-        Window.setHeight(screenHeight/2.0);
-        //Retrieve screen dimensions and set window to half the size
-
-        Window.setScene(new Scene(root, 600, 400));
-        //ngl don't know what this does but its VERY important (breaks without it)
-        //^^ Creates the window (without showing it)?
-
-        Window.show();
-        //shows the window to the user
+        // Load and show the initial login scene
+        showLoginScene();
     }
 
     public static void main(String[] args) {
         launch(args);
     }
 
-    public static void openMainWindow() throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("/com/example/dicerollerproject/main.fxml")));
-        Stage Window = new Stage();
+    // Methods for showing scenes
+    // stage > scene
+    public static void showLoginScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/example/dicerollerproject/login.fxml"));
+        Scene scene = new Scene(loader.load(), 600, 400);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
 
-        int screenWidth = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-        int screenHeight = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-        Window.setWidth(screenWidth/2.0);
-        Window.setHeight(screenHeight/2.0);
-        //Retrieve screen dimensions and set window to half the size
-
-        Window.setScene(new Scene(root, 600, 400));
-        //ngl don't know what this does but its VERY important (breaks without it)
-        //^^ Creates the window (without showing it)?
-
-        Window.show();
-        //shows the window to the user
+    public static void showMainScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/example/dicerollerproject/main.fxml"));
+        Scene scene = new Scene(loader.load(), 600, 400);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }
