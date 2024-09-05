@@ -5,6 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+//media imports for later
+import javafx.scene.media.MediaView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+// base randomizer probably dont need 
+import java.util.Random;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -19,8 +25,19 @@ public class DiceRollerController {
     //Main button used for rolling the input arguments from tbxInput
     @FXML private Button btnRollSingleDie;
     //btn used to roll a single d6
-    //^^ Initializes the interface screen elements so they can be referenced (and altered) later
+    
+    //welcome label 
     @FXML private Label lblWelcome;
+    // WIP things
+    @FXML
+    private Button btnRollSound;
+    private int roll;
+    @FXML
+    private MediaView mediaView;
+    // WIP things
+
+    //^^ Initializes the interface screen elements so they can be referenced (and altered) later
+
 
     @FXML
     public void btnRollDiceClick() {
@@ -144,5 +161,76 @@ public class DiceRollerController {
         //only add the modifier in the output, if a modifier was entered
         output = output + "Total: " + total + ".";
         return output;
+    }
+
+
+
+
+
+
+    
+    
+    
+    // WIP things 
+
+
+    private void bonusTrumpet() {
+        try {
+            String filename = "win.mp3";
+            String fileURI = getClass().getResource(filename).toURI().toString();
+            if (fileURI != null) {
+                Media media = new Media(fileURI);
+                MediaPlayer player = new MediaPlayer(media);
+                player.play();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            lblRollText.setText("Failed to load sound.");
+        }
+    }
+    
+    @FXML
+    private void playSound() {
+        // method to play a sound 
+        // rolls a die from 1-9 to select filename 
+        try {
+            Random random = new Random();
+            roll = random.nextInt(9) + 1;
+            String filename = String.format("%d.wav", roll);
+
+            String fileURI = getClass()
+
+                    .getResource(filename)
+                    .toURI()
+                    .toString();
+            
+            if (fileURI != null) {
+                Media media = new Media(fileURI);
+                MediaPlayer player = new MediaPlayer(media);
+                player.play();
+            }
+            Random random2 = new Random();
+            int roll2 = random2.nextInt(100) + 1;
+            if (roll2 == 99) {
+                bonusTrumpet();
+            }
+    
+        } catch (Exception e) {
+            e.printStackTrace();
+            lblRollText.setText("Failed to load sound.");
+        }
+    }
+    
+    // test rolling a 6 sided die with button
+    public void rollSixSided() {
+        Random random = new Random();
+        roll = random.nextInt(6) + 1; // roll a number between 1 and 6
+        sayDice(roll);
+        playSound();
+    }
+
+    // Method to display the rolled dice value
+    private void sayDice(int roll) {
+        lblRollText.setText("You rolled a " + roll + "!");
     }
 }

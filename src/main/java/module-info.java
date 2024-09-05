@@ -4,6 +4,7 @@ module com.example.dicerollerproject {
     requires java.desktop;
     requires jdk.jdi;
     requires java.sql;    
+    //merged for use later
     requires javafx.media;
 
 
