@@ -1,20 +1,22 @@
-**Project Brief: Dice Roller Companion for Tabletop Players**  
-**Intended Audience:** Tabletop RPG players (e.g., D\&D)  
-**Project Goal:** To create a dice-rolling tool that accompanies tabletop gameplay with randomised rice rolls, customizable roll macros, session tracking, and detailed dice statistics.  
-**Broader Stakeholders:** Tabletop masters, players, and general gaming communities.  
+
+**Link to Livedoc: [https://docs.google.com/document/d/1bbHr4g_zh7W4xwoYQafRI7YOFuL6KkNgTlVP9GCUVh4/edit](https://docs.google.com/document/d/1bbHr4g_zh7W4xwoYQafRI7YOFuL6KkNgTlVP9GCUVh4/edit)**
+
+
+**Project Brief: Dice Roller Companion for Tabletop Players**
+**Intended Audience:** Tabletop RPG players (e.g., D\&D)
+**Project Goal:** To create a dice-rolling tool that accompanies tabletop gameplay with randomised rice rolls, customizable roll macros, session tracking, and detailed dice statistics.
+**Broader Stakeholders:** Tabletop masters, players, and general gaming communities.
 **Key Requirements:**
 
 * **User Interface:** A clean, customizable interface with themes, dice skins, and immersive sound effects.
-* **Dice Rolling:** Supports multiple dice types and combinations (e.g., d4, d6, d8, d10, d12, d20) with custom roll macros for complex actions.  
-
+* **Dice Rolling:** Supports multiple dice types and combinations (e.g., d4, d6, d8, d10, d12, d20) with custom roll macros for complex actions.
 * **User Accounts:** Provides user authentication to save profiles, custom rolls, and session histories.
-* * **Custom Presets:** Players can save roll presets and game-specific configurations for future use.  
-* **Statistics & Analytics:** Displays dice roll statistics and outcomes, helping players analyze their luck and strategy.  
+* * **Custom Presets:** Players can save roll presets and game-specific configurations for future use.
+* **Statistics & Analytics:** Displays dice roll statistics and outcomes, helping players analyze their luck and strategy.
 * **Session Management:** Tracks and logs dice rolls with timestamps, allowing players to review session history and export roll data.
-
 * possible further implement
 
-Feature Description 
+Feature Description
 <**Graphical User Interface (GUI)** >
 
 | **Main Screen** | A clean and intuitive interface where users can roll dice, see results, add modifiers, and view rolling history. |
@@ -33,11 +35,9 @@ Feature Description
 
  **Database Integration** | Store user data (roll histories, custom macros, user profiles) in a local database or file system. |
 | **Data Backup** | Allow players to back up data and sync it across different devices. |
-| **Recovery** | Enable users to recover their data and roll history after logging in on a new device. |
 | **Dice Rolling Engine** | **Multiple Dice Types** | Support for various dice types (d4, d6, d8, d10, d12, d20, and d100). |
 | **Custom Dice Combinations** | Allow users to input combinations of dice (e.g., 2d10 \+ 1d20) and add modifiers. |
 | **Roll History** | Display a history of rolls with timestamps and results for tracking during a session. |
-
 
  **Game Mode Selection** | Let users choose preset rules based on their game of choice (e.g., D\&D 5e, Pathfinder). |
 | **Sound Effects** | Add immersive sound effects for dice rolls to enhance gameplay atmosphere. |
@@ -55,4 +55,3 @@ Feature Description
  **Themes & Layouts** | Customizable appearance, including themes (dark mode, fantasy themes) and layout customization. |
 | **Profile Avatars** | Users can choose avatars or images that represent their characters within the app. |
 | **Dice Skins** | Customizable dice appearances (e.g., metal dice, gem dice) for added visual appeal. |
-
