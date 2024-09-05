@@ -1,0 +1,51 @@
+/* styles.css */
+
+/* General for all Buttons */
+.button {
+    -fx-background-color: #2e6dd8; 
+    -fx-underline: true;
+    -fx-padding: 10;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-font-size: 18px;
+    -fx-font-family: Arial, 'Helvetica', sans-serif;
+}
+
+/*  Label Styles */
+.label-title {
+    -fx-background-color: #a71e21;
+    -fx-alignment: center;
+           -fx-padding: 10 100 10 100;
+           -fx-text-fill: black;
+           -fx-background-radius: 10px;
+           -fx-border-radius: 10px;
+           -fx-font-size: 25px;
+           -fx-font-family: Arial, 'Helvetica', sans-serif;
+           -fx-margin-bottom: 100;
+}
+
+.label-yellow {
+    -fx-background-color: yellow; 
+    -fx-alignment: center;
+    -fx-padding: 10;
+    -fx-text-fill: black;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-font-size: 18px;
+    -fx-font-family: Arial, 'Helvetica', sans-serif;
+}
+
+/* TextField */
+.textfield-green {
+    -fx-background-color: #33a31d; 
+    -fx-padding: 10;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-font-size: 18px;
+    -fx-font-family: Arial, 'Helvetica', sans-serif;
+}
+
+/* VBox Background Gradient */
+.vbox-background {
+    -fx-background-color: linear-gradient(to right, #0d1c5d, #891215); 
+}
