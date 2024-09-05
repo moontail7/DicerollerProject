@@ -6,129 +6,133 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 
+import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
 
 public class LoginController {
-    @FXML public TextField tbxInputUsername;
-    @FXML public TextField tbxInputPassword;
     //text boxes for username and password inputs respectively
-    @FXML public Button btnLogin;
-    @FXML public Button btnRegister;
+    @FXML private TextField tbxInputUsername;
+    @FXML private TextField tbxInputPassword;
     //button to login and register respectively
-    @FXML public Label lblInstructions;
+    @FXML private Button btnLogin;
+    @FXML private Button btnRegister;
     //initial instructions and feedback in case of errors
+    @FXML private Label lblInstructions;
+    //hold da user
+    // @FXML private Label lblWelcome;
 
-    Connection connection = DatabaseConnection.getInstance();
-    //connect to the database
+    //create priv connection to DB
+    private final Connection connection = DatabaseConnection.getInstance();
+    
 
-    public ResultSet rsLoginUsernames;
-    public ArrayList<String> loginUsernames = new ArrayList<>();
-    {
-        try {
-            rsLoginUsernames = connection.createStatement().executeQuery("SELECT loginUsername FROM loginAccountDetails");
-            //gets the result set for usernames
-            while (rsLoginUsernames.next()) {
-                //for each username in the result set, add it to the list
-                loginUsernames.add(rsLoginUsernames.getString(1));
-            }
-        } catch (SQLException e) {
-            lblInstructions.setText("Critical backend error: " + e + ".\nPlease Try again.");
-        }
-    }
-    //reference the database to retrieve the usernames, initially in a result set, then move to a list (because they can be appended to) then to an array to be used later
-    public ResultSet rsLoginPasswords;
-    public ArrayList<String> loginPasswords = new ArrayList<>();
-    {
-        try {
-            rsLoginPasswords = connection.createStatement().executeQuery("SELECT loginPassword FROM loginAccountDetails");
-            //gets the result set for passwords
-            while (rsLoginPasswords.next()) {
-                //for each password in the result set, add it to the list
-                loginPasswords.add(rsLoginPasswords.getString(1));
-            }
-        } catch (SQLException e) {
-            lblInstructions.setText("Critical backend error: " + e + ".\nPlease Try again.");
-        }
-    }
-    //reference the database to retrieve the passwords, initially in a result set, then move to a list (because they can be appended to) then to an array to be used later
-
-    public void btnLogin(ActionEvent actionEvent) throws Exception {
-        //when the login button is pressed
+    @FXML
+    public void btnLogin(ActionEvent actionEvent) {
+        //Login Button behaviour
+        // init input strings
         String enteredUsername = tbxInputUsername.getText();
         String enteredPassword = tbxInputPassword.getText();
-        int usernameIndex = 0;
-        boolean foundUsername = false;
-        //set starting variables
-        if (!enteredUsername.isBlank() && !enteredPassword.isBlank()) {
-            //if the entered username AND password is NOT blank (not null for both)
-            for (String Username : loginUsernames) {
-                //for each username in the database
-                if (Username.equals(enteredUsername)) {
-                    //if the entered username matches any of them
-                    foundUsername = true;
-                    break;
-                }
-                usernameIndex = usernameIndex + 1;
-                //manually count the index of the username (to be able to match the password later)
-            }
-            if (foundUsername) {
-                //if username does exist in the database
-                if (loginPasswords.get(usernameIndex).equals(enteredPassword)) {
-                    //if the password the correlates to the username (using the index) i.e. the password is correct
-                    lblInstructions.setText("Login Success. Opening the Dice Roller app (ETA <1s).");
-                    btnLogin.getScene().getWindow().hide();
-                    Main.openMainWindow();
-                } else {
-                    //if the password does not correlate with the username
-                    lblInstructions.setText("Password Incorrect. Please try again (figuratively speaking)");
-                }
+        // run validation methods on input
+        if (validateInput(enteredUsername, enteredPassword)) {
+            if (isUserValid(enteredUsername, enteredPassword)) {
+                lblInstructions.setText("Login Success. Opening the Dice Roller app (ETA <1s).");
+                //pass the username to the UserSession class
+                UserSession.getInstance().setLoggedInUsername(enteredUsername);
+                // lblWelcome.setText("Welcome: " + enteredUsername);
+
+                //close the login window
+                btnLogin.getScene().getWindow().hide();
+
+                //open the main window
+                openMainWindow();
             } else {
-                //if the username is not found
-                lblInstructions.setText("Username not found. You can register this username if you wish.");
+                lblInstructions.setText("Invalid username or password. Please try again.");
             }
-        } else {
-            lblInstructions.setText("Please enter a non-null username & password.");
         }
     }
 
+    @FXML
     public void btnRegister(ActionEvent actionEvent) {
         //when the register button is pressed
-        //below code very similar to login event, to test if the username exists in the database already
+        // init input strings
+
         String enteredUsername = tbxInputUsername.getText();
         String enteredPassword = tbxInputPassword.getText();
-        boolean foundUsername = false;
-        //set starting variables
-        if (!enteredUsername.isBlank() && !enteredPassword.isBlank()) {
-            //if the entered username AND password is NOT blank (not null for both)
-            for (String Username : loginUsernames) {
-                //for each username in the database
-                if (Username.equals(enteredUsername)) {
-                    //if the entered username matches any of them
-                    foundUsername = true;
-                    break;
-                }
-            }
-            if (!foundUsername) {
-                //if the entered username does NOT match any of them
-                try {
-                    PreparedStatement insertAccount = connection.prepareStatement("INSERT INTO loginAccountDetails (loginUsername, loginPassword) VALUES (?, ?)");
-                    //prepare the bulk statement, inserting the username and password to the table (which we set below)
-                    insertAccount.setString(1, enteredUsername);
-                    insertAccount.setString(2, enteredPassword);
-                    //set the username and password input to parameter 1 and 2 respectively in the SQL prepared statement
-                    insertAccount.execute();
-                    //execute the prepared statement
-                } catch (SQLException e) {
-                    lblInstructions.setText("Critical backend error: " + e + ".\nPlease Try again.");
-                }
+        // run validation methods on input
+        if (validateInput(enteredUsername, enteredPassword)) {
+            if (!doesUserExist(enteredUsername)) {
+                registerUser(enteredUsername, enteredPassword);
             } else {
-                //if the entered username exists in the database
-                lblInstructions.setText("This username is already registered");
+                lblInstructions.setText("This username is already registered.");
             }
-        } else {
-            //if either the username or password is blank (null)
+        }
+    }
+
+    private boolean validateInput(String username, String password) {
+        // reusable validation method 
+        // can add more checks than just blank checks here TODO:: add more checks
+        if (username.isBlank() || password.isBlank()) {
             lblInstructions.setText("Please enter a non-null username & password.");
+            return false;
+        }
+        return true;
+    }
+                
+
+    private boolean isUserValid(String username, String password) {
+        //check if the entered username matches any DB entry
+        try (PreparedStatement check = connection.prepareStatement("SELECT * FROM loginAccountDetails WHERE loginUsername = ? AND loginPassword = ?")) {
+            //set the username and password input to parameter 1 and 2 respectively in the SQL prepared statement
+
+            check.setString(1, username);
+            check.setString(2, password);
+            ResultSet rs = check.executeQuery();
+            //exectue
+
+            return rs.next();
+            //if the result set has a next value, then the username exists
+        } catch (SQLException e) {
+            lblInstructions.setText("Critical backend error: " + e.getMessage() + ".\nPlease Try again.");
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private boolean doesUserExist(String username) {
+        //check if the entered username matches any DB entry
+        try (PreparedStatement exist = connection.prepareStatement("SELECT * FROM loginAccountDetails WHERE loginUsername = ?")) {
+            exist.setString(1, username);
+            //execute the prepared statement
+            ResultSet rs = exist.executeQuery();
+            return rs.next();
+            //if the result set has a next value, then the username exists
+        } catch (SQLException e) {
+            lblInstructions.setText("Critical backend error: " + e.getMessage() + ".\nPlease Try again.");
+            e.printStackTrace();
+            return true;  // Return true to prevent registration
+        }
+    }
+
+    private void registerUser(String username, String password) {
+        //prepare the bulk statement, inserting the username and password to the table (which we set below)
+        try (PreparedStatement insertAccount = connection.prepareStatement("INSERT INTO loginAccountDetails (loginUsername, loginPassword) VALUES (?, ?)")) {
+            //set the username and password input to parameter 1 and 2 respectively in the SQL prepared statement
+            insertAccount.setString(1, username);
+            insertAccount.setString(2, password);
+            //execute the prepared statement
+            insertAccount.executeUpdate();
+            lblInstructions.setText("Registration successful! You can now log in.");
+        } catch (SQLException e) {
+            lblInstructions.setText("Critical backend error: " + e.getMessage() + ".\nPlease Try again.");
+            e.printStackTrace();
+        }
+    }
+    //method to show main window
+    private void openMainWindow() {
+        try {
+            Main.showMainScene(UserSession.getInstance().getLoggedInUsername()); 
+        } catch (IOException e) {
+            lblInstructions.setText("Error opening main window: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }
