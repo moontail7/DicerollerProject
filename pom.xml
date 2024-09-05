@@ -30,6 +30,11 @@
             <artifactId>javafx-fxml</artifactId>
             <version>21</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>21.0.2</version>
+        </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -43,6 +48,7 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        
     </dependencies>
 
     <build>
