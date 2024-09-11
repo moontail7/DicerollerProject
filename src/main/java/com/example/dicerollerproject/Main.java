@@ -41,11 +41,13 @@ public class Main extends Application {
     // Methods for showing scenes
     // stage > scene
     public static void showLoginScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/example/dicerollerproject/login.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/example/dicerollerproject/main.fxml"));
         Scene scene = new Scene(loader.load(), 800, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+
     public static void showMainScene(String loggedInUsername) throws IOException {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/example/dicerollerproject/main.fxml"));
         Scene scene = new Scene(loader.load(), 800, 600);
