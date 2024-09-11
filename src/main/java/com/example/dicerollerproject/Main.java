@@ -31,7 +31,7 @@ public class Main extends Application {
         primaryStage.setTitle("Dice Roller");
 
         // Load and show the initial login scene
-        showLoginScene();
+        showMainScene();
     }
 
     public static void main(String[] args) {

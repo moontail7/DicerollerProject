@@ -10,12 +10,12 @@
 
 <VBox alignment="CENTER"
       spacing="10.0"
-      xmlns="http://javafx.com/javafx/17"
+      xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.dicerollerproject.LoginController"
       
       styleClass="vbox-background"
-      stylesheets="@styles.css">
+      stylesheets="@styles2.css">
    
 
     
