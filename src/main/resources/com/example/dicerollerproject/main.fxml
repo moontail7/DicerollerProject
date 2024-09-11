@@ -23,7 +23,7 @@
            styleClass="label-title"
             />
 
-    <VBox alignment="RIGHT" 
+    <VBox 
     spacing="5">
         <Label text="Second VBox Label" />
         <Button text="Button 2" />
