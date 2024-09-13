@@ -2,7 +2,7 @@
 
 /* General for all Buttons */
 .button {
-    -fx-background-color: #5c3d3d; 
+    -fx-background-color: #d1dbc6; 
     -fx-underline: true;
     -fx-padding: 10;
     -fx-background-radius: 10px;
@@ -13,7 +13,7 @@
 
 /*  Label Styles */
 .label-title {
-    -fx-background-color: #acacac;
+    -fx-background-color: #58a562;
     -fx-alignment: center;
            -fx-padding: 10 100 10 100;
            -fx-text-fill: black;
@@ -25,7 +25,7 @@
 }
 
 .label-yellow {
-    -fx-background-color: rgb(255, 255, 255); 
+    -fx-background-color: #58a562; 
     -fx-alignment: center;
     -fx-padding: 10;
     -fx-text-fill: black;
@@ -37,7 +37,7 @@
 
 /* TextField */
 .textfield-green {
-    -fx-background-color: #ffffff71; 
+    -fx-background-color: #bfe63271; 
     -fx-padding: 10;
     -fx-background-radius: 10px;
     -fx-border-radius: 10px;
@@ -47,7 +47,7 @@
 
 /* VBox Background Gradient */
 .vbox-background {
-    -fx-background-color: linear-gradient(to right, #6d5c5c75, #ffffff5d); 
+    -fx-background-color: #ffffff; 
 }
 
 
