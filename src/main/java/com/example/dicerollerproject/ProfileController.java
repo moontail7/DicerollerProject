@@ -10,14 +10,12 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.sql.*;
 
-public class ProfileController {
+public class ProfileController extends InfoController {
 
-    @FXML Label lblWelcome;
+    // @FXML Label lblWelcome;
 
     @FXML private Button btnLogout;
 
-
-    
     @FXML
     private Label lblUsername;
 
@@ -32,13 +30,11 @@ public class ProfileController {
     private Button btnReturnToMain;
 
 
-
-
 public void showLoggedinUser(String username) {
-    lblWelcome.setText("Welcome: " + username); // Display the logged-in username
+    lblUsername.setText("Welcome: " + username); // Display the logged-in username
 }
 
-public void init() {
+    public void populateUserData() {
     String username = UserSession.getInstance().getLoggedInUsername();
     String email = "placeholder_email@email.lol";
 
@@ -47,7 +43,17 @@ public void init() {
 
 }
 
+public void returnToMain(ActionEvent event) throws IOException {
+    btnReturnToMain.getScene().getWindow().hide();
+
 
 }
 
+public void logout(ActionEvent event) throws IOException {
+    UserSession.getInstance().setLoggedInUsername(null);
+    btnLogout.getScene().getWindow().hide();
+
+}
+
+}
 
