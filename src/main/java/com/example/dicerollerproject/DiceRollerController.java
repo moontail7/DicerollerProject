@@ -9,6 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.media.MediaView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+
+import java.io.IOException;
 // base randomizer probably dont need 
 import java.util.Random;
 
@@ -25,6 +27,8 @@ public class DiceRollerController {
     //Main button used for rolling the input arguments from tbxInput
     @FXML private Button btnRollSingleDie;
     //btn used to roll a single d6
+
+    
     
     //welcome label 
     @FXML private Label lblWelcome;
@@ -232,5 +236,19 @@ public class DiceRollerController {
     // Method to display the rolled dice value
     private void sayDice(int roll) {
         lblRollText.setText("You rolled a " + roll + "!");
+    }
+
+    @FXML
+    private void profileButtonClicked(ActionEvent event) {
+        openProfileWindow();
+    }
+
+    private void openProfileWindow() {
+        try {
+            Main.showProfileScene(UserSession.getInstance().getLoggedInUsername()); 
+        } catch (IOException e) {
+           
+            e.printStackTrace();
+        }
     }
 }

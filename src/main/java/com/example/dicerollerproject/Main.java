@@ -59,4 +59,16 @@ public class Main extends Application {
     }
 
     
+    public static void showProfileScene(String loggedInUsername) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/example/dicerollerproject/profile.fxml"));
+        Scene scene = new Scene(loader.load(), 800, 600);
+    
+        // Get the controller for the profile scene and call the common method
+        ProfileController controller = loader.getController();
+        controller.showLoggedinUser(loggedInUsername);
+        controller.init();
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
 }
