@@ -19,9 +19,7 @@ public class ProfileController extends InfoController {
     @FXML
     private Label lblUsername;
 
-    @FXML
-    private Label lblEmail;
-    
+
 
     @FXML
     private Button btnEditProfile;
@@ -35,10 +33,10 @@ public class ProfileController extends InfoController {
 /// PUTS THE DATA INTO THE PROFILE PAGE 
     public void populateUserData() {
     String username = UserSession.getInstance().getLoggedInUsername();
-    String email = "placeholder_email@email.lol";
+    
 
     lblUsername.setText("Username: " + username);
-    lblEmail.setText("Email: " + email);
+    
 
 }
 
@@ -50,7 +48,6 @@ public void returnToMain(ActionEvent event) throws IOException {
 
 
 }
-
 public void logout(ActionEvent event) throws IOException {
     UserSession.getInstance().setLoggedInUsername(null);
     btnLogout.getScene().getWindow().hide();

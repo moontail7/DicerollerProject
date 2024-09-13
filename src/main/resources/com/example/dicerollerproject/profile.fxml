@@ -22,7 +22,7 @@
             <children>
                   <!-- User Information -->
                   <Label fx:id="lblUsername" layoutY="64.0" styleClass="label-large" text="Username: " />
-                  <Label fx:id="lblEmail" layoutX="12.0" layoutY="81.0" styleClass="label-large" text="Email: " />
+                  
                   <Label fx:id="lblWelcome" layoutX="74.0" layoutY="30.0" styleClass="label-large" text="Welcome!" />
       
                   
