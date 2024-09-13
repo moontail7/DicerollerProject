@@ -30,10 +30,9 @@ public class ProfileController extends InfoController {
     private Button btnReturnToMain;
 
 
-public void showLoggedinUser(String username) {
-    lblUsername.setText("Welcome: " + username); // Display the logged-in username
-}
 
+
+/// PUTS THE DATA INTO THE PROFILE PAGE 
     public void populateUserData() {
     String username = UserSession.getInstance().getLoggedInUsername();
     String email = "placeholder_email@email.lol";
@@ -43,6 +42,9 @@ public void showLoggedinUser(String username) {
 
 }
 
+
+
+/////// NOT IMPLINMENTED YET //////
 public void returnToMain(ActionEvent event) throws IOException {
     btnReturnToMain.getScene().getWindow().hide();
 
