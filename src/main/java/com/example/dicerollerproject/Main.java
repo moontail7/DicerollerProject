@@ -62,7 +62,7 @@ public class Main extends Application {
     
 public static void showProfileWindow(String loggedInUsername) throws IOException {
     FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/example/dicerollerproject/profile.fxml"));
-    Scene scene = new Scene(loader.load(), 800, 600);
+    Scene scene = new Scene(loader.load());
     
     ProfileController controller = loader.getController();
     controller.showLoggedinUser(loggedInUsername);
