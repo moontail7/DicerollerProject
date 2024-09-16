@@ -21,7 +21,7 @@
          <Pane prefHeight="385.0" prefWidth="200.0">
             <children>
                   <!-- User Information -->
-                  <Label fx:id="lblUsername" layoutY="64.0" styleClass="label-large" text="Username: " />
+                  <Label fx:id="lblUsername" layoutX="6.0" layoutY="115.0" styleClass="label-large" text="Username: " />
                   
                   <Label fx:id="lblWelcome" layoutX="74.0" layoutY="30.0" styleClass="label-large" text="Welcome!" />
       
@@ -30,7 +30,8 @@
                   <HBox layoutY="81.0" spacing="10.0">
 
             </HBox>
-                  <Label layoutX="15.0" layoutY="183.0" text="Settings" />
+                  <Label layoutX="14.0" layoutY="183.0" text="Settings" />
+               <Label layoutX="14.0" layoutY="247.0" text="Logout" />
             </children>
          </Pane>
         </VBox>

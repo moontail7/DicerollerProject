@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.media.Media?>
-<?import javafx.scene.media.MediaPlayer?>
-<?import javafx.scene.media.MediaView?>
-<?import javafx.scene.control.*?>
+
 <BorderPane prefHeight="479.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dicerollerproject.DiceRollerController">
 
     <!-- Center area containing the main VBox content -->
@@ -17,7 +16,7 @@
         <VBox alignment="CENTER" prefHeight="599.0" prefWidth="620.0" spacing="10.0" styleClass="vbox-background" stylesheets="@styles2.css">
 
                                                       <!-- Title Label -->
-            <Label alignment="CENTER" styleClass="label-title" text="Dice Roller (Java Beta V1.4)" />
+            <Label alignment="CENTER" styleClass="label-title" stylesheets="@styles2.css" text="Dice Roller (Java Beta V1.4)" />
 
                                                                      <!-- Instructions Label -->
             <Label maxWidth="600" styleClass="label-yellow" text="Enter a command in the format 'XdY+N' to roll the dice (e.g., 2d6+3)." />
@@ -39,7 +38,7 @@
                       <Button fx:id="btnRollDice" layoutX="526.0" onAction="#btnRollDiceClick" styleClass="button" text="Roll" />
          
                                     <!-- Result Label -->
-                     <Label fx:id="lblRollText" layoutX="238.0" layoutY="131.0" maxWidth="600" styleClass="label-yellow" text="Roll to start" textAlignment="CENTER" wrapText="true" />
+                     <Label fx:id="lblRollText" layoutX="220.0" layoutY="125.0" maxWidth="600" styleClass="label-yellow" text="Roll to start" textAlignment="CENTER" wrapText="true" />
                </children>
             </Pane>
             </HBox>
@@ -54,13 +53,13 @@
                                   <!-- Welcome Person Label -->
                       <Label fx:id="lblWelcome" layoutX="-1.0" layoutY="36.0" maxWidth="600" prefHeight="43.0" prefWidth="115.0" styleClass="label-yellow" text=" " textAlignment="CENTER">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
-                  <Button layoutX="39.0" layoutY="79.0" mnemonicParsing="false" text="Settings" />
-                  <Button fx:id="btnProfile" layoutX="39.0" layoutY="108.0" mnemonicParsing="false" text="Profile" onAction="#showProfileWindow" />
-                  <Button layoutX="30.0" layoutY="133.0" mnemonicParsing="false" text="Roll History" />
-                  <Button layoutX="44.0" layoutY="165.0" mnemonicParsing="false" text="Mode" />
+                  <Button layoutX="14.0" layoutY="117.0" mnemonicParsing="false" stylesheets="@styles2.css" text="Settings" />
+                  <Button fx:id="btnProfile" layoutX="10.0" layoutY="158.0" mnemonicParsing="false" onAction="#showProfileWindow" stylesheets="@styles2.css" text="Profile" />
+                  <Button layoutX="14.0" layoutY="199.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="85.0" stylesheets="@styles2.css" text="Roll History" />
+                  <Button layoutX="13.0" layoutY="240.0" mnemonicParsing="false" stylesheets="@styles2.css" text="Mode" />
                </children>
             </Pane>
          </children>
