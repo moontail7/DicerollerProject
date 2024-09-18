@@ -52,7 +52,9 @@ public class Main extends Application {
     public static void showMainScene(String loggedInUsername) throws IOException {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/example/dicerollerproject/main.fxml"));
         Scene scene = new Scene(loader.load());
+        // setting formatting for screen in FMXL rather than here - saving old code tho for refrence now
         // Scene scene = new Scene(loader.load(), 800, 600);
+
         // point to the controller and call the method to show the logged-in user
         DiceRollerController controller = loader.getController();
         controller.showLoggedinUser(loggedInUsername);
