@@ -48,7 +48,7 @@ public class DiceRollerController {
         } catch (Exception e) {
             lblRollText.setText("Invalid Input. Please try again (but better this time).");
         }
-        
+        playSound();
     }
 
     public void showLoggedinUser(String username) {
