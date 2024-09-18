@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -9,64 +10,178 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dicerollerproject.DiceRollerController">
 
-    <!-- Center area containing the main VBox content -->
+<BorderPane prefHeight="600.0"
+            prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/22"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.dicerollerproject.DiceRollerController">
+    <!-- Center VBox content -->
     <center>
-        <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="10.0" styleClass="vbox-background" stylesheets="@styles2.css">
-
+        <VBox alignment="CENTER"
+              prefHeight="600.0"
+              prefWidth="800.0"
+              spacing="10.0"
+              styleClass="vbox-background"
+              stylesheets="@styles2.css">
             <!-- Title Label -->
-            <Label alignment="CENTER" styleClass="label-title" stylesheets="@styles2.css" text="Dice Roller (Java Beta V1.4)" />
-
+            <Label alignment="CENTER"
+                   styleClass="label-title"
+                   stylesheets="@styles2.css"
+                   text="Dice Roller (Java Beta V1.5)" />
+            <VBox layoutX="-1.0"
+                  layoutY="36.0">
+                <children>
+                    <!-- Welcome Person Label -->
+                    <Label fx:id="lblUsername"
+                           alignment="CENTER"
+                           contentDisplay="CENTER"
+                           maxWidth="600"
+                           prefHeight="43.0"
+                           prefWidth="115.0"
+                           text=" "
+                           textAlignment="CENTER">
+                        <font>
+                            <Font name="Bell MT"
+                                  size="32.0" />
+                        </font>
+                    </Label>
+                </children>
+            </VBox>
             <!-- Instructions Label -->
-            <Label maxWidth="600" styleClass="label-yellow" text="Enter a command in the format 'XdY+N' to roll the dice (e.g., 2d6+3)." />
-
+            <Label maxWidth="613.0"
+                   prefHeight="41.0"
+                   prefWidth="613.0"
+                   styleClass="label-yellow"
+                   text="Enter a command in the format 'XdY+N' to roll the dice (e.g., 2d6+3)." />
             <!-- Quick Input Buttons and Result -->
-            <VBox alignment="CENTER" spacing="10">
-            <VBox>
-               <children>
-                      <!-- Input Textbox and Buttons -->
-                      <Pane prefHeight="200.0" prefWidth="588.0">
-                          <children>
-                              <TextField fx:id="tbxInput" layoutX="52.0" layoutY="14.0" maxWidth="600" prefHeight="40.0" prefWidth="526.0" styleClass="textfield-green" />
-                              <Button fx:id="btnQISingleD4" layoutX="52.0" layoutY="61.0" onAction="#btnQISingleD4Click" styleClass="button" text="Add a d4" />
-                              <Button fx:id="btnQISingleD6" layoutX="144.0" layoutY="61.0" onAction="#btnQISingleD6Click" styleClass="button" text="Add a d6" />
-                              <Button fx:id="btnQISingleD8" layoutX="236.0" layoutY="61.0" onAction="#btnQISingleD8Click" styleClass="button" text="Add a d8" />
-                              <Button fx:id="btnQISingleD10" layoutX="328.0" layoutY="61.0" onAction="#btnQISingleD10Click" styleClass="button" text="Add a d10" />
-                              <Button fx:id="btnQISingleD12" layoutX="430.0" layoutY="61.0" onAction="#btnQISingleD12Click" styleClass="button" text="Add a d12" />
-                              <Button fx:id="btnQISingleD20" layoutX="532.0" layoutY="61.0" onAction="#btnQISingleD20Click" styleClass="button" text="Add a d20" />
-                              <Button fx:id="btnRollDice" layoutX="583.0" layoutY="15.0" onAction="#btnRollDiceClick" styleClass="button" text="Roll" />
-                          </children>
-                      </Pane>
-               </children>
+            <VBox alignment="CENTER"
+                  spacing="10">
+                <!-- Input Textbox and Buttons -->
+                <HBox alignment="CENTER"
+                      spacing="10">
+                    <TextField fx:id="tbxInput"
+                               layoutX="52.0"
+                               layoutY="14.0"
+                               maxWidth="600"
+                               prefHeight="40.0"
+                               prefWidth="526.0"
+                               styleClass="textfield-green" />
+                    <Button fx:id="btnRollDice"
+                            alignment="CENTER"
+                            contentDisplay="CENTER"
+                            layoutX="583.0"
+                            layoutY="15.0"
+                            onAction="#btnRollDiceClick"
+                            prefHeight="41.0"
+                            prefWidth="75.0"
+                            styleClass="button"
+                            text="Roll" />
+                </HBox>
+                <!-- HBox  Buttons -->
+                <HBox alignment="CENTER"
+                      spacing="5">
+                    <Button fx:id="btnQISingleD4"
+                            layoutX="52.0"
+                            layoutY="61.0"
+                            onAction="#btnQISingleD4Click"
+                            styleClass="button"
+                            text="Add a d4" />
+                    <Button fx:id="btnQISingleD6"
+                            layoutX="144.0"
+                            layoutY="61.0"
+                            onAction="#btnQISingleD6Click"
+                            styleClass="button"
+                            text="Add a d6" />
+                    <Button fx:id="btnQISingleD8"
+                            layoutX="236.0"
+                            layoutY="61.0"
+                            onAction="#btnQISingleD8Click"
+                            styleClass="button"
+                            text="Add a d8" />
+                    <Button fx:id="btnQISingleD10"
+                            layoutX="328.0"
+                            layoutY="61.0"
+                            onAction="#btnQISingleD10Click"
+                            styleClass="button"
+                            text="Add a d10" />
+                    <Button fx:id="btnQISingleD12"
+                            layoutX="430.0"
+                            layoutY="61.0"
+                            onAction="#btnQISingleD12Click"
+                            styleClass="button"
+                            text="Add a d12" />
+                    <Button fx:id="btnQISingleD20"
+                            layoutX="532.0"
+                            layoutY="61.0"
+                            onAction="#btnQISingleD20Click"
+                            styleClass="button"
+                            text="Add a d20" />
+                </HBox>
+                <!-- Result Label -->
             </VBox>
-   
-                <!-- Result Label Centered -->
-                <Label fx:id="lblRollText" maxWidth="600" styleClass="label-yellow" text="Roll to start" textAlignment="CENTER" wrapText="true" />
-            </VBox>
+            <!-- just a hbox to do spacing for the label beneath -->
+            <HBox alignment="CENTER">
+                <padding>
+                    <Insets top="60.0" />
+                </padding>
+            </HBox>
+            <Label fx:id="lblRollText"
+                   maxWidth="614.0"
+                   prefHeight="41.0"
+                   prefWidth="614.0"
+                   styleClass="label-yellow"
+                   text="Roll to start"
+                   textAlignment="CENTER"
+                   wrapText="true" />
         </VBox>
     </center>
-
     <!-- Right Pane -->
     <right>
-        <HBox prefHeight="452.0" prefWidth="113.0" BorderPane.alignment="CENTER">
+        <HBox prefHeight="600.0"
+              prefWidth="131.0"
+              BorderPane.alignment="CENTER">
             <children>
-                <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;">
+                <Pane prefHeight="600.0"
+                      prefWidth="153.0"
+                      style="-fx-background-color: grey;">
                     <children>
-                  <VBox layoutX="-1.0" layoutY="36.0">
-                     <children>
-                              <!-- Welcome Person Label -->
-                              <Label fx:id="lblUsername" maxWidth="600" prefHeight="43.0" prefWidth="115.0" styleClass="label-yellow" text=" " textAlignment="CENTER">
-                                  <font>
-                                      <Font size="16.0" />
-                                  </font>
-                              </Label>
-                              <Button mnemonicParsing="false" stylesheets="@styles2.css" text="Settings" />
-                              <Button fx:id="btnProfile" mnemonicParsing="false" onAction="#showProfileWindow" stylesheets="@styles2.css" text="Profile" />
-                              <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="85.0" stylesheets="@styles2.css" text="Roll History" />
-                              <Button mnemonicParsing="false" stylesheets="@styles2.css" text="Mode" />
-                     </children>
-                  </VBox>
+                        <!-- all the buttons in the pane and their  directions -->
+                        <Button alignment="CENTER"
+                                layoutX="11.0"
+                                layoutY="413.0"
+                                mnemonicParsing="false"
+                                prefHeight="41.0"
+                                prefWidth="108.0"
+                                stylesheets="@styles2.css"
+                                text="Mode" />
+                        <Button alignment="CENTER"
+                                layoutX="10.0"
+                                layoutY="352.0"
+                                mnemonicParsing="false"
+                                prefHeight="41.0"
+                                prefWidth="109.0"
+                                stylesheets="@styles2.css"
+                                text="History" />
+                        <Button fx:id="btnProfile"
+                                alignment="CENTER"
+                                layoutX="10.0"
+                                layoutY="290.0"
+                                mnemonicParsing="false"
+                                onAction="#showProfileWindow"
+                                prefHeight="41.0"
+                                prefWidth="110.0"
+                                stylesheets="@styles2.css"
+                                text="Profile" />
+                        <!-- ^^ onAction envokes function to go to profile window defined in dicerollercontroller -->
+                        <Button alignment="CENTER"
+                                layoutX="10.0"
+                                layoutY="227.0"
+                                mnemonicParsing="false"
+                                prefHeight="41.0"
+                                prefWidth="110.0"
+                                stylesheets="@styles2.css"
+                                text="Settings" />
                     </children>
                 </Pane>
             </children>
