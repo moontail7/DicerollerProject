@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -13,7 +12,7 @@
 
 <BorderPane prefHeight="600.0"
             prefWidth="800.0"
-            xmlns="http://javafx.com/javafx/22"
+            xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.dicerollerproject.DiceRollerController">
     <!-- Center VBox content -->
@@ -30,24 +29,7 @@
                    stylesheets="@styles2.css"
                    text="Dice Roller (Java Beta V1.5)" />
             <VBox layoutX="-1.0"
-                  layoutY="36.0">
-                <children>
-                    <!-- Welcome Person Label -->
-                    <Label fx:id="lblUsername"
-                           alignment="CENTER"
-                           contentDisplay="CENTER"
-                           maxWidth="600"
-                           prefHeight="43.0"
-                           prefWidth="115.0"
-                           text=" "
-                           textAlignment="CENTER">
-                        <font>
-                            <Font name="Bell MT"
-                                  size="32.0" />
-                        </font>
-                    </Label>
-                </children>
-            </VBox>
+                  layoutY="36.0" />
             <!-- Instructions Label -->
             <Label maxWidth="613.0"
                    prefHeight="41.0"
@@ -146,6 +128,22 @@
                       prefWidth="153.0"
                       style="-fx-background-color: grey;">
                     <children>
+                        <!-- Welcome Person Label -->
+                        <Label fx:id="lblUsername"
+                               alignment="CENTER"
+                               contentDisplay="CENTER"
+                               layoutX="7.0"
+                               layoutY="177.0"
+                               maxWidth="600"
+                               prefHeight="43.0"
+                               prefWidth="115.0"
+                               text=" "
+                               textAlignment="CENTER">
+                            <font>
+                                <Font name="Bell MT"
+                                      size="16.0" />
+                            </font>
+                        </Label>
                         <!-- all the buttons in the pane and their  directions -->
                         <Button alignment="CENTER"
                                 layoutX="11.0"

@@ -11,7 +11,7 @@
       spacing="10.0"
       styleClass="vbox-background"
       stylesheets="@styles2.css"
-      xmlns="http://javafx.com/javafx/22"
+      xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.dicerollerproject.LoginController">
     <!-- Title Label -->
