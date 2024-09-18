@@ -43,7 +43,7 @@ public class Main extends Application {
     // stage > scene
     public static void showLoginScene() throws IOException {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/example/dicerollerproject/login.fxml"));
-        Scene scene = new Scene(loader.load(), 800, 600);
+        Scene scene = new Scene(loader.load());
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -51,7 +51,8 @@ public class Main extends Application {
 
     public static void showMainScene(String loggedInUsername) throws IOException {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/example/dicerollerproject/main.fxml"));
-        Scene scene = new Scene(loader.load(), 800, 600);
+        Scene scene = new Scene(loader.load());
+        // Scene scene = new Scene(loader.load(), 800, 600);
         // point to the controller and call the method to show the logged-in user
         DiceRollerController controller = loader.getController();
         controller.showLoggedinUser(loggedInUsername);

@@ -31,7 +31,7 @@ public class DiceRollerController {
     
     
     //welcome label 
-    @FXML private Label lblWelcome;
+    @FXML private Label lblUsername;
     // WIP things
     @FXML
     private Button btnRollSound;
@@ -186,7 +186,7 @@ public class DiceRollerController {
 
 
     public void showLoggedinUser(String username) {
-        lblWelcome.setText("Welcome: " + username); // Display the logged-in username
+        lblUsername.setText("Welcome: " + username); // Display the logged-in username
     }
 
 

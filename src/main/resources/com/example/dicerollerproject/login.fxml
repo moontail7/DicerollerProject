@@ -1,107 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.layout.HBox?>
 
-<?import javafx.geometry.Insets?>
-
-
-<VBox alignment="CENTER"
-      spacing="10.0"
-      xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.dicerollerproject.LoginController"
-      
-      styleClass="vbox-background"
-      stylesheets="@styles2.css">
+<VBox alignment="CENTER" minHeight="600.0" minWidth="800.0" spacing="10.0" styleClass="vbox-background" stylesheets="@styles2.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dicerollerproject.LoginController">
    
-
-    
+      
+          
     <!-- Title Label -->
-    <Label text="Dice Roller - Login Screen (Java Beta V1.4)"
-    styleClass="label-title"
-            />
+    <Label styleClass="label-title" text="Dice Roller - Login Screen (Java Beta V1.4)" />
 
-    <!-- Box to capture the Username elements -->
-    <HBox spacing="3.0"
-          alignment="BOTTOM_CENTER"
-          maxHeight="150"
-          prefHeight="150"
-          minHeight="80">
+          <!-- Box to capture the Username elements -->
+    <HBox alignment="BOTTOM_CENTER" maxHeight="150" minHeight="80" prefHeight="150" spacing="3.0">
 
-        <!-- Adds extra blank space to the left, making the elements centered -->
+              <!-- Adds extra blank space to the left, making the elements centered -->
         <VBox.margin>
             <Insets>
                 <left>70</left>
             </Insets>
         </VBox.margin>
 
+      
+              <!-- Username Label -->
+        <Label alignment="CENTER_RIGHT" maxWidth="175" minWidth="100" styleClass="label-yellow" text="Enter Username" />
 
-        <!-- Username Label -->
-        <Label text="Enter Username"
-               maxWidth="175"
-               minWidth="100"
-               alignment="CENTER_RIGHT"
-               styleClass="label-yellow"/>
-
-        <!-- Input Textbox for Username -->
-        <TextField fx:id="tbxInputUsername"
-                   maxWidth="300"
-                   minWidth="100"
-                   alignment="CENTER_LEFT"
-                   styleClass="textfield-green"/>
+              <!-- Input Textbox for Username -->
+        <TextField fx:id="tbxInputUsername" alignment="CENTER_LEFT" maxWidth="300" minWidth="100" styleClass="textfield-green" />
     </HBox>
 
-    <!-- Box to capture the password elements -->
-    <HBox spacing="3.0"
-          alignment="CENTER">
+          <!-- Box to capture the password elements -->
+    <HBox alignment="CENTER" spacing="3.0">
 
-        <!-- Adds extra blank space to the left, making the elements centered -->
+              <!-- Adds extra blank space to the left, making the elements centered -->
         <VBox.margin>
             <Insets>
                 <left>70</left>
             </Insets>
         </VBox.margin>
 
-        <!-- Password Label -->
-        <Label text="Enter Password"
-               maxWidth="175"
-               minWidth="100"
-               alignment="CENTER_RIGHT"
-               styleClass="label-yellow"
-        />
+              <!-- Password Label -->
+        <Label alignment="CENTER_RIGHT" maxWidth="175" minWidth="100" styleClass="label-yellow" text="Enter Password" />
 
-        <!-- Input Textbox for Password -->
-        <TextField fx:id="tbxInputPassword"
-                   maxWidth="300"
-                   minWidth="100"
-                   alignment="CENTER_LEFT"
-                   styleClass="textfield-green"/>
+              <!-- Input Textbox for Password -->
+        <TextField fx:id="tbxInputPassword" alignment="CENTER_LEFT" maxWidth="300" minWidth="100" styleClass="textfield-green" />
     </HBox>
 
-    <!-- box to contain the login/register buttons -->
-    <HBox spacing="3.0"
-          alignment="CENTER">
+          <!-- box to contain the login/register buttons -->
+    <HBox alignment="CENTER" spacing="3.0">
         <!-- Button Submit Login Details -->
-        <Button fx:id="btnLogin"
-                text="Login"
-                onAction="#btnLogin"
-                styleClass="button"
-        />
+        <Button fx:id="btnLogin" onAction="#btnLogin" styleClass="button" text="Login" />
         <!-- Button Submit Login Details -->
-        <Button fx:id="btnRegister"
-                text="Register"
-                onAction="#btnRegister"
-                styleClass="button"
-        />
+        <Button fx:id="btnRegister" onAction="#btnRegister" styleClass="button" text="Register" />
     </HBox>
-    <Label fx:id="lblInstructions"
-           text="Enter your username and password to login/register"
-           maxWidth="600"
-           wrapText="true"
-           textAlignment="CENTER"
-           styleClass="label-yellow"
-           />
+    <Label fx:id="lblInstructions" maxWidth="600" styleClass="label-yellow" text="Enter your username and password to login/register" textAlignment="CENTER" wrapText="true" />
 </VBox>
