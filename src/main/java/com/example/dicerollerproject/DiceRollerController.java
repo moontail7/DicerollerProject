@@ -2,6 +2,9 @@ package com.example.dicerollerproject;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -9,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.media.MediaView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 // base randomizer probably dont need 
@@ -162,8 +166,45 @@ public class DiceRollerController {
         }
         //only add the modifier in the output, if a modifier was entered
         output = output + "Total: " + total + ".";
+
+        // Insert the total roll into the database
+        DatabaseConnection.getInstance();
+        System.out.println("Inserting roll total: " + total);
+        DatabaseConnection.insertRoll(total);
+
         return output;
     }
+
+//// History STUFF
+
+    @FXML
+    private Button btnhistory;
+
+    @FXML
+    public void btnhistoryClicked(ActionEvent actionEvent) {
+        // Open the history window
+        openHistoryWindow();
+    }
+
+    private void openHistoryWindow() {
+        try {
+            // Load the FXML file for the history window
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/dicerollerproject/History.fxml"));
+            Parent root = fxmlLoader.load();
+
+            // Create a new stage (window) for the history
+            Stage historyStage = new Stage();
+            historyStage.setTitle("Roll History");
+
+            // Set the scene and show the history window
+            Scene scene = new Scene(root);
+            historyStage.setScene(scene);
+            historyStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
     /////////////////////////////////////////////////////////////////////////////////////
