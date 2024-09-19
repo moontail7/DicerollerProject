@@ -63,24 +63,24 @@ public class Main extends Application {
     }
 
     
-public static void showProfileWindow(String loggedInUsername) throws IOException {
-    FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/example/dicerollerproject/profile.fxml"));
-    Scene scene = new Scene(loader.load());
-    
-    ProfileController controller = loader.getController();
-    controller.showLoggedinUser(loggedInUsername);
-    controller.populateUserData();
-    
-    // Create a new Stage (window)
-    Stage profileStage = new Stage();
-    profileStage.setTitle("User Profile");
-    profileStage.setScene(scene);
-    
-    // (blocks input to other windows until closed)
-    profileStage.initModality(Modality.APPLICATION_MODAL);
+    public static void showProfileWindow(String loggedInUsername) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/example/dicerollerproject/profile.fxml"));
+        Scene scene = new Scene(loader.load());
+        
+        ProfileController controller = loader.getController();
+        controller.showLoggedinUser(loggedInUsername);
+        controller.populateUserData();
+        
+        // Create a new Stage (window)
+        Stage profileStage = new Stage();
+        profileStage.setTitle("User Profile");
+        profileStage.setScene(scene);
+        
+        // (blocks input to other windows until closed)
+        profileStage.initModality(Modality.APPLICATION_MODAL);
 
-    // Show the new window
-    profileStage.show();
-}
+        // Show the new window
+        profileStage.show();
+    }
 
 }

@@ -48,11 +48,12 @@ public class DiceRollerController {
         //event
         try {
             lblRollText.setText(MainDiceRoller(tbxInput.getText()));
+            playSound();
             
         } catch (Exception e) {
             lblRollText.setText("Invalid Input. Please try again (but better this time).");
         }
-        playSound();
+        
     }
     public void btnQISingleD4Click(ActionEvent actionEvent) {
         //btn Event to add "1d4" to the tbxInput text field
