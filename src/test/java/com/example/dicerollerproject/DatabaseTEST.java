@@ -4,18 +4,18 @@ import org.junit.jupiter.api.Test;
 import java.sql.Connection;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DatabaseTEST{
+public class DatabaseTEST {
 
     @Test
-    public void testDatabaseConnectionNotNull() {
+    public void testIfDBConnectionNotNull() {
         Connection connection = DatabaseConnection.getInstance();
-        assertNotNull(connection, "Database connection should not be null.");
+        assertNotNull(connection, "DB connection shouldn't be null, check if it connects.");
     }
 
     @Test
-    public void testDatabaseConnectionSingleton() {
+    public void testIfSameDBConnectionUsedEveryTime() {
         Connection firstInstance = DatabaseConnection.getInstance();
         Connection secondInstance = DatabaseConnection.getInstance();
-        assertSame(firstInstance, secondInstance, "DatabaseConnection should return the same instance (Singleton).");
+        assertSame(firstInstance, secondInstance, "should use the same DB connection.");
     }
 }
