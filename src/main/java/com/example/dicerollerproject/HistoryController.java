@@ -6,7 +6,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SortEvent;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
-
+import java.util.Collections;
 import java.util.List;
 
 public class HistoryController {
@@ -18,6 +18,9 @@ public class HistoryController {
     public void initialize() {
         // Fetch rolls from the database
         List<Roll> rolls = DatabaseConnection.getAllRolls();
+
+        // Reverse the list so the most recent roll is at the top
+        Collections.reverse(rolls);
 
         // Populate the ListView with roll data
         for (Roll roll : rolls) {
@@ -54,4 +57,17 @@ public class HistoryController {
         }
     }
 
+    @FXML
+    private Button clearAllButton;
+
+    @FXML
+    public void clearAllData(ActionEvent event) {
+        // Call the method to clear all rolls from the database
+        DatabaseConnection.clearAllRolls();
+
+        // Clear the ListView after clearing the database
+        historyListView.getItems().clear();
+
+        System.out.println("History cleared.");
+    }
 }
