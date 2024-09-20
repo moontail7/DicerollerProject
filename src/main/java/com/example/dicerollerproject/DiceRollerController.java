@@ -21,6 +21,7 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class DiceRollerController {
+
     @FXML private Label lblRollText;
     //Main output of the input arguments
     @FXML public Button btnProfile;
@@ -175,9 +176,7 @@ public class DiceRollerController {
     }
 
 //// History STUFF
-
-    @FXML
-    private Button btnhistory;
+    public Button btnhistory;
 
     @FXML
     public void btnhistoryClicked(ActionEvent actionEvent) {
