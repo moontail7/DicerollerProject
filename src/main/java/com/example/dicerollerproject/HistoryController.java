@@ -11,11 +11,8 @@ import java.util.List;
 
 public class HistoryController {
 
-    @FXML
-    private Button closeButton;
-
-    @FXML
-    private ListView<String> historyListView; 
+    @FXML private Button closeButton;
+    @FXML private ListView<String> historyListView;
 
     @FXML
     public void initialize() {
@@ -29,15 +26,12 @@ public class HistoryController {
         }
     }
 
-    @FXML
-    public void closeHistoryWindow(ActionEvent event) {
+    @FXML public void closeHistoryWindow(ActionEvent event) {
         // Close the history window
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
 
-
-  
     public static class Roll {
         private int id;
         private int rollValue;
@@ -52,11 +46,9 @@ public class HistoryController {
         public int getId() {
             return id;
         }
-
         public int getRollValue() {
             return rollValue;
         }
-
         public String getTimestamp() {
             return timestamp;
         }

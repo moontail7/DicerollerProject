@@ -1,6 +1,5 @@
 package com.example.dicerollerproject;
 
-
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Connection;
@@ -18,8 +17,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
-
 
 
 public class Main extends Application {
