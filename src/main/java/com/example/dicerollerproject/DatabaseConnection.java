@@ -58,6 +58,17 @@ public class DatabaseConnection {
         }
     }
 
+    public static void clearAllRolls() {
+        String sql = "DELETE FROM rolls";  // Deletes all rows from the rolls table
+        try (Statement stmt = getInstance().createStatement()) {
+            stmt.executeUpdate(sql);
+            System.out.println("All rolls cleared.");
+        } catch (SQLException e) {
+            System.err.println("SQL Error: " + e.getMessage());
+        }
+    }
+
+
     // Method to retrieve roll history
     public static List<HistoryController.Roll> getAllRolls() {
         List<HistoryController.Roll> rolls = new ArrayList<>();
@@ -77,6 +88,8 @@ public class DatabaseConnection {
         }
         return rolls;
     }
+
+
 
 
 }

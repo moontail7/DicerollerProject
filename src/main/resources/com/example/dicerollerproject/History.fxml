@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
 
 <VBox alignment="CENTER"
       spacing="10.0"
@@ -17,10 +19,17 @@
     <!-- Text Area for list of previous rolls -->
     <ListView fx:id="historyListView" prefHeight="200" prefWidth="300" />
 
-    <!-- Close Button -->
-    <Button fx:id="closeButton"
-            text="Close"
-            onAction="#closeHistoryWindow"
-            styleClass="button-close"/>
+    <HBox spacing="10" alignment="CENTER">
+        <!-- Close Button -->
+        <Button fx:id="closeButton"
+                text="Close"
+                onAction="#closeHistoryWindow"
+                styleClass="button-close"/>
+
+        <!-- Clear All Button -->
+        <Button fx:id="clearAllButton"
+                text="Clear All"
+                onAction="#clearAllData"/>
+    </HBox>
 
 </VBox>
