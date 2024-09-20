@@ -9,13 +9,14 @@ import java.sql.PreparedStatement;
 public class DatabaseConnection {
     private static Connection instance = null;
 
+    // Constructor to initialize connection
     private DatabaseConnection() {
         String url = "jdbc:sqlite:database.db";
         try {
             instance = DriverManager.getConnection(url);
             createTable();
-        } catch (SQLException sqlEx) {
-            System.err.println(sqlEx);
+        } catch (SQLException e) {
+            System.err.println("Failed to connect to the database: " + e.getMessage());
         }
     }
 
@@ -34,29 +35,20 @@ public class DatabaseConnection {
 
     public static Connection getInstance() {
         if (instance == null) {
-            new DatabaseConnection();
+            new DatabaseConnection(); // Initialize only if not already done
         }
         return instance;
     }
 
-
-    public static void closeConnection() {
-        try {
-            if (instance != null && !instance.isClosed()) {
-                instance.close();
-            }
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
-    }
-
     // Method to insert a roll value into the database
     public static void insertRoll(int rollValue) {
-        if (instance == null || isConnectionClosed()) {
-            System.err.println("Connection is closed or null");
+        if (instance == null) {
+            System.err.println("Database connection is not initialized.");
             return;
         }
+
         String sql = "INSERT INTO rolls (roll_value) VALUES (?)";
+
         try (PreparedStatement pstmt = instance.prepareStatement(sql)) {
             pstmt.setInt(1, rollValue);
             pstmt.executeUpdate();
@@ -66,22 +58,12 @@ public class DatabaseConnection {
         }
     }
 
-
-    private static boolean isConnectionClosed() {
-        try {
-            return instance == null || instance.isClosed();
-        } catch (SQLException e) {
-            return true;
-        }
-    }
-
     // Method to retrieve roll history
     public static List<HistoryController.Roll> getAllRolls() {
         List<HistoryController.Roll> rolls = new ArrayList<>();
         String sql = "SELECT * FROM rolls";
 
-        try (Connection conn = getInstance();
-             Statement stmt = conn.createStatement();
+        try (Statement stmt = instance.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
@@ -95,5 +77,6 @@ public class DatabaseConnection {
         }
         return rolls;
     }
+
 
 }
