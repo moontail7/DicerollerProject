@@ -174,10 +174,12 @@
                                 stylesheets="@styles2.css"
                                 text="Profile" />
                         <!-- ^^ onAction envokes function to go to profile window defined in dicerollercontroller -->
-                        <Button alignment="CENTER"
+                        <Button fx:id="btnSettings"
+                                alignment="CENTER"
                                 layoutX="10.0"
                                 layoutY="227.0"
                                 mnemonicParsing="false"
+                                onAction="#btnSettingsClick"
                                 prefHeight="41.0"
                                 prefWidth="110.0"
                                 stylesheets="@styles2.css"

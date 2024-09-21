@@ -203,6 +203,39 @@ public class DiceRollerController {
         }
     }
 
+    ////// Setting Stuff
+    @FXML public Button btnSettings;
+
+    @FXML public void btnSettingsClick(ActionEvent actionEvent) {
+        // Open the history window
+        openSettingWindow();
+    }
+
+    private void openSettingWindow() {
+        try {
+            // Load the FXML file for the Setting window
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/dicerollerproject/Settings.fxml"));
+
+            // Load the Parent node from FXML
+            Parent root = fxmlLoader.load();
+
+            // Create a new Stage
+            Stage stage = new Stage();
+
+            // Set the title of the window
+            stage.setTitle("Settings");
+
+            // Set the scene with the loaded FXML
+            stage.setScene(new Scene(root));
+
+            // Show the new window
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
     /////////////////////////////////////////////////////////////////////////////////////
