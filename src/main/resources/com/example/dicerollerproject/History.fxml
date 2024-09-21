@@ -3,33 +3,41 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
+<!-- History Window -->
+<AnchorPane prefHeight="500.0"
+            prefWidth="400.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.dicerollerproject.HistoryController">
+    <children>
+        <!-- VBox for Title and ListView -->
+        <VBox alignment="CENTER" spacing="10.0" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+            <!-- Title Label -->
+            <Label> Roll History
+                <font>
+                    <Font size="33.0" />
+                </font>
+            </Label>
+            <!-- ListView for list of previous rolls -->
+            <ListView fx:id="historyListView" prefHeight="350" prefWidth="310" />
+        </VBox>
 
-<VBox alignment="CENTER"
-      spacing="10.0"
-      xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.dicerollerproject.HistoryController"
-      styleClass="vbox-background"
-      stylesheets="@styles.css">
+        <!-- HBox for Buttons, placed at the bottom of the AnchorPane -->
+        <HBox spacing="10" alignment="CENTER" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+            <!-- Close Button -->
+            <Button fx:id="closeButton"
+                    text="Close"
+                    onAction="#closeHistoryWindow"
+                    styleClass="button-close"/>
 
-    <!-- Title Label -->
-    <Label text="Dice Roller History" styleClass="label-title"/>
-
-    <!-- Text Area for list of previous rolls -->
-    <ListView fx:id="historyListView" prefHeight="200" prefWidth="300" />
-
-    <HBox spacing="10" alignment="CENTER">
-        <!-- Close Button -->
-        <Button fx:id="closeButton"
-                text="Close"
-                onAction="#closeHistoryWindow"
-                styleClass="button-close"/>
-
-        <!-- Clear All Button -->
-        <Button fx:id="clearAllButton"
-                text="Clear All"
-                onAction="#clearAllData"/>
-    </HBox>
-
-</VBox>
+            <!-- Clear All Button -->
+            <Button fx:id="clearAllButton"
+                    text="Clear All"
+                    onAction="#clearAllData"/>
+        </HBox>
+    </children>
+</AnchorPane>
