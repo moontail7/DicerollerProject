@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.dicerollerproject.SettingsController"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <!-- VBox for Title -->
+        <VBox alignment="CENTER" spacing="10.0" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+            <!-- Title Label -->
+            <Label> Settings
+                <font>
+                    <Font size="33.0" />
+                </font>
+            </Label>
+        </VBox>
+
+        <!-- HBox for Buttons, placed at the bottom of the AnchorPane -->
+        <HBox spacing="10" alignment="CENTER" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+
+
+
+
+
+
+        </HBox>
+
+    </children>
+
+</AnchorPane>
