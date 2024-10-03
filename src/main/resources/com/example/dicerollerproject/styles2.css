@@ -11,6 +11,8 @@
     -fx-font-family: Arial, 'Helvetica', sans-serif;
 }
 
+
+
 /*  Label Styles */
 .label-title {
     -fx-background-color: #58a562;
@@ -45,9 +47,65 @@
     -fx-font-family: Arial, 'Helvetica', sans-serif;
 }
 
+.d4button {
+    -fx-background-image: url("icons/d4.png");
+    -fx-background-size: 80px;
+    -fx-background-color: #ffffff;
+    -fx-padding: 20;
+    -fx-border-radius: 20px;
+}
+.d4button:hover {
+    -fx-background-color: #58a562;
+}
+
+.d6button {
+    -fx-background-image: url("icons/d6.png");
+    -fx-background-size: 80px;
+    -fx-background-color: #ffffff;
+}
+.d6button:hover {
+    -fx-background-color: #58a562;
+}
+
+.d8button {
+    -fx-background-image: url("icons/d8.png");
+    -fx-background-size: 80px;
+    -fx-background-color: #ffffff;
+}
+.d8button:hover {
+    -fx-background-color: #58a562;
+}
+
+.d10button {
+    -fx-background-image: url("icons/d10.png");
+    -fx-background-size: 80px;
+    -fx-background-color: #ffffff;
+}
+.d10button:hover {
+    -fx-background-color: #58a562;
+}
+
+.d12button {
+    -fx-background-image: url("icons/d12.png");
+    -fx-background-size: 80px;
+    -fx-background-color: #ffffff;
+}
+.d12button:hover {
+    -fx-background-color: #58a562;
+}
+
+.d20button {
+    -fx-background-image: url("icons/d20.png");
+    -fx-background-size: 80px;
+    -fx-background-color: #ffffff;
+}
+.d20button:hover {
+    -fx-background-color: #58a562;
+}
+
 /* VBox Background Gradient */
 .vbox-background {
-    -fx-background-color: #ffffff; 
+    -fx-background-color: #ffffff;
 }
 
 
