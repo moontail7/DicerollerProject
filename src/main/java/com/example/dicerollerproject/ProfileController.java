@@ -23,6 +23,15 @@ public class ProfileController {
         }
     }
 
+    public void showLoggedinUser(String username) {
+        if (lblUsername != null) {
+            lblUsername.setText("Welcome: " + username); // Display the logged-in username
+        }
+     }
+
+
+
+    //////////// not implemented yet
     @FXML
     public void returnToMain(ActionEvent event) throws IOException {
         btnReturnToMain.getScene().getWindow().hide();
@@ -36,9 +45,5 @@ public class ProfileController {
 
   
 
-    public void showLoggedinUser(String username) {
-    if (lblUsername != null) {
-        lblUsername.setText("Welcome: " + username); // Display the logged-in username
-    }
- }
+
 }

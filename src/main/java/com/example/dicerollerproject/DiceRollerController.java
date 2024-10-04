@@ -49,6 +49,7 @@ public class DiceRollerController {
         try {
             lblRollText.setText(MainDiceRoller(tbxInput.getText()));
             playSound();
+            
         } catch (Exception e) {
             lblRollText.setText("Invalid Input. Please try again (but better this time).");
         }
@@ -90,7 +91,7 @@ public class DiceRollerController {
         //Inputs/adds a d"20" to the tbx inout
     }
 
-    private  static String QIDice(String DiceSidesNum, String tbxInputText) {
+    public  static String QIDice(String DiceSidesNum, String tbxInputText) {
         String Output = "";
         if (tbxInputText.contains("d" + DiceSidesNum)) {
             String[] InputArguments = tbxInputText.split("\\+");
@@ -119,7 +120,7 @@ public class DiceRollerController {
         return Output;
     }
 
-    private static String MainDiceRoller(String input) {
+    public static String MainDiceRoller(String input) {
         String output = "Results: ";
         int total = 0;
         int modifierTotal = 0;

@@ -1,6 +1,7 @@
 package com.example.dicerollerproject;
 
 public class UserSession {
+    
     private static UserSession instance; 
     private String loggedInUsername; 
 
