@@ -10,6 +10,9 @@ import java.util.Collections;
 import java.util.List;
 import java.io.FileWriter;
 import java.io.IOException;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 
 public class HistoryController {
 
@@ -19,13 +22,27 @@ public class HistoryController {
 
     @FXML
     public void initialize() {
+        // Set up periodic refreshing of the ListView
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), event -> refreshHistory()));
+        timeline.setCycleCount(Timeline.INDEFINITE); // Run indefinitely
+        timeline.play(); // Start the timeline
+
+        // Initial fetch of the history data
+        refreshHistory();
+
+    }
+
+    public void refreshHistory() {
         // Fetch rolls from the database
         List<Roll> rolls = DatabaseConnection.getAllRolls();
+
+        // Clear the current items
+        historyListView.getItems().clear();
 
         // Reverse the list so the most recent roll is at the top
         Collections.reverse(rolls);
 
-        // Populate the ListView with roll data
+        // Populate the ListView with updated roll data
         for (Roll roll : rolls) {
             String displayText = "Roll ID: " + roll.getId() + ", Value: " + roll.getRollValue() + ", Timestamp: " + roll.getTimestamp();
             historyListView.getItems().add(displayText);
