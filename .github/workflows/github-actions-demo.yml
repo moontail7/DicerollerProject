@@ -16,3 +16,10 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+      - name: Run a multi-line script
+        run: 
+          echo Is Java Installed ?
+          java -version
+          echo Is Git installed?
+          git --version
