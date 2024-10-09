@@ -8,10 +8,13 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import java.util.Collections;
 import java.util.List;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class HistoryController {
 
     @FXML private Button closeButton;
+    @FXML private Button exportButton;
     @FXML private ListView<String> historyListView;
 
     @FXML
@@ -69,5 +72,28 @@ public class HistoryController {
         historyListView.getItems().clear();
 
         System.out.println("History cleared.");
+    }
+
+    @FXML
+    public void ExportData(ActionEvent event) {
+        // Fetch rolls from the database
+        List<Roll> rolls = DatabaseConnection.getAllRolls();
+
+        // Define the CSV file path
+        String csvFile = "exported_rolls.csv";
+
+        try (FileWriter writer = new FileWriter(csvFile)) {
+            // Write the CSV header
+            writer.append("Roll ID, Roll Value, Timestamp\n");
+
+            // Loop through the rolls and write them to the CSV file
+            for (Roll roll : rolls) {
+                writer.append(roll.getId() + "," + roll.getRollValue() + "," + roll.getTimestamp() + "\n");
+            }
+
+            System.out.println("Data successfully exported to " + csvFile);
+        } catch (IOException e) {
+            System.out.println("Error exporting data: " + e.getMessage());
+        }
     }
 }

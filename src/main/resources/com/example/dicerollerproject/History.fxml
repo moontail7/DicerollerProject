@@ -38,6 +38,11 @@
             <Button fx:id="clearAllButton"
                     text="Clear All"
                     onAction="#clearAllData"/>
+
+            <!-- Export Button -->
+            <Button fx:id="exportButton"
+                    text="Export Session"
+                    onAction="#ExportData"/>
         </HBox>
     </children>
 </AnchorPane>
