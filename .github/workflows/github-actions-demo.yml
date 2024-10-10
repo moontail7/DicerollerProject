@@ -23,3 +23,43 @@ jobs:
           java -version
           echo Is Git installed?
           git --version
+
+
+        
+
+  build:
+
+    # The runner environment for this job
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    
+    - name: Set up JDK 21
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'AMS'  
+        java-version: '21'
+
+    - name: Cache Maven packages
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+
+    - name: Build with Maven
+      run: mvn -B clean install
+
+    - name: Run tests with Maven
+      run: mvn test
+
+    - name: Display test results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: target/surefire-reports/
