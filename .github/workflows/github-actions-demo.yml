@@ -40,7 +40,7 @@ jobs:
     - name: Set up JDK 21
       uses: actions/setup-java@v3
       with:
-        distribution: 'AMS'  
+        distribution: 'AWS'  
         java-version: '21'
 
     - name: Cache Maven packages
