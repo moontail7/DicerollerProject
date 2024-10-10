@@ -8,6 +8,7 @@ module com.example.dicerollerproject {
     requires javafx.media;
 
 
+
     opens com.example.dicerollerproject to javafx.fxml;
     exports com.example.dicerollerproject;
 }

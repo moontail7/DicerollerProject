@@ -2,9 +2,6 @@ package com.example.dicerollerproject;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.sql.PreparedStatement;
 
 public class DatabaseConnection {
     private static Connection instance = null;
@@ -25,6 +22,9 @@ public class DatabaseConnection {
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "roll_value INTEGER NOT NULL, " +
                 "timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)";
+
+                //TODO add custom rolls table  to init
+                //TODO add roll history table to init
 
         try (Statement stmt = instance.createStatement()) {
             stmt.execute(sql);
@@ -89,7 +89,57 @@ public class DatabaseConnection {
         return rolls;
     }
 
+    public static void saveCustomRoll(String rollName, String rollFormula, String username) {
+        String sql = "INSERT INTO custom_rolls (roll_name, roll_formula, username) VALUES (?, ?, ?)";
+    
+        try (PreparedStatement pstmt = getInstance().prepareStatement(sql)) {
+            pstmt.setString(1, rollName);
+            pstmt.setString(2, rollFormula);
+            pstmt.setString(3, username);
+            pstmt.executeUpdate();
+            System.out.println("Custom roll saved successfully.");
+        } catch (SQLException e) {
+            System.err.println("Error saving custom roll: " + e.getMessage());
+        }
+    }
 
+
+    public static List<String> getCustomRolls(String username) {
+    List<String> customRolls = new ArrayList<>();
+    String sql = "SELECT roll_name FROM custom_rolls WHERE username = ?";
+
+    try (PreparedStatement pstmt = getInstance().prepareStatement(sql)) {
+        pstmt.setString(1, username);
+        ResultSet rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+            customRolls.add(rs.getString("roll_name"));
+        }
+    } catch (SQLException e) {
+        System.err.println("Error fetching custom rolls: " + e.getMessage());
+    }
+
+    return customRolls;
+}
+
+public static String getRollFormat(String rollName, String username) {
+    String rollFormat = null;
+    String sql = "SELECT roll_formula FROM custom_rolls WHERE roll_name = ? AND username = ?";
+
+    try (PreparedStatement pstmt = getInstance().prepareStatement(sql)) {
+        pstmt.setString(1, rollName);
+        pstmt.setString(2, username);
+        ResultSet rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            rollFormat = rs.getString("roll_formula");
+        }
+    } catch (SQLException e) {
+        System.err.println("Error fetching roll format: " + e.getMessage());
+    }
+
+    return rollFormat;
+}
 
 
 }

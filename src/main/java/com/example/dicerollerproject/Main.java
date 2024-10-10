@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import com.example.dicerollerproject.DiceRollerController;
+
 
 public class Main extends Application {
 
@@ -68,13 +70,16 @@ public static void showProfileWindow(String loggedInUsername) throws IOException
     controller.showLoggedinUser(loggedInUsername);
     controller.populateUserData();
     
-    // Create a new Stage (window)
+    
     Stage profileStage = new Stage();
     profileStage.setTitle("User Profile");
     profileStage.setScene(scene);
     
-    // (blocks input to other windows until closed)
+   
     profileStage.initModality(Modality.APPLICATION_MODAL);
+
+    // profileStage.setOnHidden(event -> loadCustomRollsIntoComboBox());
+
 
     // Show the new window
     profileStage.show();
