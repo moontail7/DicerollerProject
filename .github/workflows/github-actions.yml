@@ -48,5 +48,4 @@ jobs:
         - name: Run code quality checks
           run: mvn verify
 
-        - run: echo "🍏 This job's status is ${{ job.status }}."
 
