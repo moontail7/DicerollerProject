@@ -29,7 +29,6 @@ jobs:
 
   build:
 
-    # The runner environment for this job
     runs-on: ubuntu-latest
 
     steps:

@@ -5,18 +5,22 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+// import javafx.scene.control.Button;
+// import javafx.scene.control.ComboBox;
+// import javafx.scene.control.Label;
+// import javafx.scene.control.ListView;
+// import javafx.scene.control.TextField;
+
 //media imports for later
-import javafx.scene.media.MediaView;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.*;
+// import javafx.scene.media.MediaView;
+// import javafx.scene.media.Media;
+// import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import java.util.List;
 import javafx.scene.control.ComboBox;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 // base randomizer probably dont need 
@@ -38,6 +42,10 @@ public class DiceRollerController {
     @FXML
     private Button btnRollDice;
     // Main button used for rolling the input arguments from tbxInput
+    @FXML 
+    private Button btnClearDicef;
+    // Clear the dice input field
+
     @FXML
     private Button btnRollSingleDie;
     // btn used to roll a single d6
@@ -119,6 +127,12 @@ public class DiceRollerController {
     public void btnQISingleD20Click(ActionEvent actionEvent) {
         // btn Event to add "1d20" to the tbxInput text field
         tbxInput.setText(QIDice("20", tbxInput.getText()));
+        // Inputs/adds a d"20" to the tbx inout
+    }
+
+    public void btnClearDicef(MouseEvent mouseEvent) {
+        // btn Event to add "1d20" to the tbxInput text field
+        tbxInput.setText("");
         // Inputs/adds a d"20" to the tbx inout
     }
 
@@ -281,7 +295,7 @@ public class DiceRollerController {
     /// PROFILE STUFF /////// POSSIBLY MOVE TO A NEW CONTROLLER FILE
 
     @FXML
-    public void showProfileWindow(ActionEvent event) { // This method must match the onAction reference in FXML
+    public void showProfileWindow(ActionEvent event) { 
         try {
             Main.showProfileWindow(UserSession.getInstance().getLoggedInUsername());
         } catch (IOException e) {
@@ -415,7 +429,7 @@ public class DiceRollerController {
         }
 
         String username = UserSession.getInstance().getLoggedInUsername();
-        DatabaseConnection.saveCustomRoll(rollName, rollFormula, username);
+        DatabaseConnection.SaveCustomRoll(rollName, rollFormula, username);
         loadCustomRolls();
         lblRollText.setText("Custom Roll Saved.");
     }
@@ -425,7 +439,7 @@ public class DiceRollerController {
         // Get the custom rolls for the logged-in user
         // Populate the ListView with custom rolls
         listCustomRolls.getItems().clear();
-        List<String> customRolls = DatabaseConnection.getCustomRolls(UserSession.getInstance().getLoggedInUsername());
+        List<String> customRolls = DatabaseConnection.GetCustomRolls(UserSession.getInstance().getLoggedInUsername());
 
         // Populate the ListView with custom rolls
         listCustomRolls.getItems().addAll(customRolls);
@@ -439,13 +453,13 @@ public class DiceRollerController {
     private Button btnInsertCustomRoll;
 
     // Load custom rolls into the ComboBox
-    private void loadCustomRollsIntoComboBox() {
+    public void loadCustomRollsIntoComboBox() {
         String username = UserSession.getInstance().getLoggedInUsername();
-        List<String> customRolls = DatabaseConnection.getCustomRolls(username);
+        List<String> customRolls = DatabaseConnection.GetCustomRolls(username);
 
         cmbCustomRolls.getItems().clear(); // clear older user rolls
         for (String rollName : customRolls) {
-            String rollFormula = DatabaseConnection.getRollFormat(rollName, username);
+            String rollFormula = DatabaseConnection.GetRollFormat(rollName, username);
             String displayText = rollName + " (" + rollFormula + ")";
             cmbCustomRolls.getItems().add(displayText); // Add formatted text to ComboBox
         }
@@ -453,13 +467,17 @@ public class DiceRollerController {
 
     
 
-    // Event handler for inserting the selected custom roll into the input field
+    // For inserting the selected custom roll into the input field
     @FXML
-    public void insertCustomRoll() {
+    public void InsertCustomRoll() {
         String selectedRollName = cmbCustomRolls.getValue();
         if (selectedRollName != null) {
+            if (selectedRollName.contains("(")) {
+                selectedRollName = selectedRollName.substring(0, selectedRollName.indexOf(" (")).trim();
+            }
+            
             String username = UserSession.getInstance().getLoggedInUsername();
-            String rollFormula = DatabaseConnection.getRollFormat(selectedRollName, username);
+            String rollFormula = DatabaseConnection.GetRollFormat(selectedRollName, username);
             if (rollFormula != null) {
                 tbxInput.setText(rollFormula); // Insert the roll formula into the input field
             }
@@ -467,5 +485,5 @@ public class DiceRollerController {
             lblRollText.setText("Please select a custom roll.");
         }
     }
-
+    
 }

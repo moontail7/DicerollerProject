@@ -22,9 +22,16 @@ import javafx.scene.control.ListView;
 
 public class ProfileController {
 
+   
+
+
+    
+
+
     @FXML
 public void initialize() {
-    loadCustomRolls(); // Load the rolls when the profile page is opened
+    loadCustomRolls();
+     // Load the rolls when the profile page is opened
 }
 
     @FXML private Button btnLogout;
@@ -60,7 +67,7 @@ public void initialize() {
          public void loadCustomRolls() {
              String username = UserSession.getInstance().getLoggedInUsername();
              if (username != null) {
-                 List<String> customRolls = DatabaseConnection.getCustomRolls(username);
+                 List<String> customRolls = DatabaseConnection.GetCustomRolls(username);
                  listCustomRolls.getItems().clear(); 
                  listCustomRolls.getItems().addAll(customRolls); 
              }
@@ -77,7 +84,7 @@ public void initialize() {
              }
          
              String username = UserSession.getInstance().getLoggedInUsername();
-             DatabaseConnection.saveCustomRoll(rollName, rollFormula, username); 
+             DatabaseConnection.SaveCustomRoll(rollName, rollFormula, username); 
          
              loadCustomRolls(); 
          
@@ -100,6 +107,8 @@ public void initialize() {
     }
 
   
+
+
 
 
 }
