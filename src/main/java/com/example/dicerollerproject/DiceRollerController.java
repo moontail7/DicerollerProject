@@ -19,7 +19,7 @@ import javafx.scene.media.*;
 // import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import java.util.List;
-import javafx.scene.control.ComboBox;
+
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -414,6 +414,9 @@ public class DiceRollerController {
         loadCustomRollsIntoComboBox();
         cmbCustomRolls.setPromptText("Select or add a custom roll"); 
 
+            cmbCustomRolls.setOnShowing(event -> {
+        loadCustomRollsIntoComboBox();
+    });
     }
 
     @FXML
@@ -448,20 +451,18 @@ public class DiceRollerController {
     @FXML
     private ComboBox<String> cmbCustomRolls;
 
-    // Event handler for inserting the selected custom roll into the input field
     @FXML
     private Button btnInsertCustomRoll;
 
-    // Load custom rolls into the ComboBox
     public void loadCustomRollsIntoComboBox() {
         String username = UserSession.getInstance().getLoggedInUsername();
         List<String> customRolls = DatabaseConnection.GetCustomRolls(username);
 
-        cmbCustomRolls.getItems().clear(); // clear older user rolls
+        cmbCustomRolls.getItems().clear(); 
         for (String rollName : customRolls) {
             String rollFormula = DatabaseConnection.GetRollFormat(rollName, username);
             String displayText = rollName + " (" + rollFormula + ")";
-            cmbCustomRolls.getItems().add(displayText); // Add formatted text to ComboBox
+            cmbCustomRolls.getItems().add(displayText); 
         }
     }
 
