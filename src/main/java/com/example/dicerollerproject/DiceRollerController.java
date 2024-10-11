@@ -304,7 +304,7 @@ public class DiceRollerController {
     }
 
     public void showLoggedinUser(String username) {
-        lblUsername.setText("Welcome: " + username); // Display the logged-in username
+        lblUsername.setText("Welcome: \n"  + username); // Display the logged-in username
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
@@ -321,7 +321,7 @@ public class DiceRollerController {
 
     private void bonusTrumpet() {
         try {
-            String filename = "win.mp3";
+            String filename = "win.wav";
             String fileURI = getClass().getResource(filename).toURI().toString();
             if (fileURI != null) {
                 Media media = new Media(fileURI);

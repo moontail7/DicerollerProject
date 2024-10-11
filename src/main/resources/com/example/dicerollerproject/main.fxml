@@ -60,10 +60,10 @@
                 <Pane prefHeight="600.0" prefWidth="153.0" style="-fx-background-color: grey;">
                     <children>
                         <!-- Welcome Person Label -->
-                        <Label fx:id="lblUsername" alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="177.0" maxWidth="600" prefHeight="43.0" prefWidth="115.0" text=" " textAlignment="CENTER">
-                            <font>
-                                <Font name="Bell MT" size="16.0" />
-                            </font>
+                        <Label fx:id="lblUsername" alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="91.0" maxWidth="600" prefHeight="61.0" prefWidth="115.0" text=" " textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
                         </Label>
                         <!-- all the buttons in the pane and their  directions -->
                         <Button alignment="CENTER" layoutX="11.0" layoutY="413.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="108.0" stylesheets="@styles2.css" text="Mode" />

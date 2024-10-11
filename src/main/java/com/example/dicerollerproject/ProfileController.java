@@ -93,7 +93,7 @@ public void initialize() {
          }
 
              @FXML public void closeHistoryWindow(ActionEvent event) {
-        // Close the history window
+        // REUSED FOR PROFILE WINDOW
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
