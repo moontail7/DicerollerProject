@@ -18,6 +18,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import com.example.dicerollerproject.DiceRollerController;
+import com.example.dicerollerproject.ProfileController;
+
 
 public class Main extends Application {
 
@@ -65,15 +68,16 @@ public static void showProfileWindow(String loggedInUsername) throws IOException
     Scene scene = new Scene(loader.load());
     
     ProfileController controller = loader.getController();
+    
     controller.showLoggedinUser(loggedInUsername);
     controller.populateUserData();
     
-    // Create a new Stage (window)
+    
     Stage profileStage = new Stage();
     profileStage.setTitle("User Profile");
     profileStage.setScene(scene);
     
-    // (blocks input to other windows until closed)
+   
     profileStage.initModality(Modality.APPLICATION_MODAL);
 
     // Show the new window
