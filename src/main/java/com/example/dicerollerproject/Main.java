@@ -84,4 +84,15 @@ public static void showProfileWindow(String loggedInUsername) throws IOException
     profileStage.show();
 }
 
+
+public static void showSettingsWindow() throws IOException {
+    FXMLLoader loader = new FXMLLoader(Main.class.getResource("/com/example/dicerollerproject/settings.fxml"));
+    Scene scene = new Scene(loader.load());
+    Stage settingsStage = new Stage();
+    settingsStage.setTitle("Settings");
+    settingsStage.setScene(scene);
+    settingsStage.show();
+}
+
+
 }
