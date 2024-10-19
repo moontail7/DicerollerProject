@@ -1,6 +1,7 @@
 package com.example.dicerollerproject;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,15 +14,23 @@ import javafx.scene.control.*;
 // import javafx.scene.control.TextField;
 
 //media imports for later
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.*;
 // import javafx.scene.media.MediaView;
 // import javafx.scene.media.Media;
 // import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.scene.paint.Color;
+import java.awt.*;
 import java.util.List;
 
 import javafx.scene.input.MouseEvent;
 
+import javax.swing.text.html.StyleSheet;
 import java.io.IOException;
 // base randomizer probably dont need 
 import java.util.Random;
@@ -30,6 +39,16 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class DiceRollerController {
 
+    public VBox windowBackground;
+    public HBox sidePane;
+    public Label mainTitle;
+    public Label subTitle;
+    public Button btnQISingleD4;
+    public Button btnQISingleD6;
+    public Button btnQISingleD8;
+    public Button btnQISingleD10;
+    public Button btnQISingleD12;
+    public Button btnQISingleD20;
     @FXML
     private Label lblRollText;
     // Main output of the input arguments
@@ -486,5 +505,79 @@ public class DiceRollerController {
             lblRollText.setText("Please select a custom roll.");
         }
     }
-    
+    /////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////
+
+    @FXML
+    private Button modeButton;
+
+    // Define an array of colors
+    // Secondary items
+    private String[] hexColors2 = {"#A65C48", "#884879", "#5A8CB1", "#BEE60F", "#58a562", "#660505"};
+    // Third items
+    private String[] hexColors1 = {"#A73C24", "#A7288A", "#3498DB", "#adf10f", "#d1dbc6", "#870606"};
+    private String[] textColors = {"#FFFFFF", "#FFFFFF", "#FF0000", "#0000FF", "#FF0000", "#FFFFFF"};
+    // Fourth colour
+    private String[] hexColors3 = {"#805E50", "#785871", "#937972", "#CFDB0F", "#95C094", "#412929"};
+    // Background colours
+    private String[] hexColorsBackground = {"#73695E", "#28A745", "#CC6633", "#F1C40F", "#ffffff", "#343434"};
+    private String[] hexColorsSidePane = {"#A74C36", "#884879", "#5A8CB1", "#F1C40F", "#ffffff", "#870606"};
+
+    // Counters
+    private int currentColorIndex = 0;
+    private int currentTextIndex = 0;
+
+
+    @FXML
+    public void modeButtonClicked() {
+        // change secondary items
+        tbxInput.setStyle("-fx-background-color: " + hexColors2[currentColorIndex]);
+        mainTitle.setStyle("-fx-background-color: " + hexColors2[currentColorIndex]);
+        subTitle.setStyle("-fx-background-color: " + hexColors2[currentColorIndex]);
+        lblRollText.setStyle("-fx-background-color: " + hexColors2[currentColorIndex]);
+
+        // Change the button background color third items
+        modeButton.setStyle("-fx-background-color: " + hexColors1[currentColorIndex] + "; -fx-text-fill: " + textColors[currentTextIndex]);
+        btnhistory.setStyle("-fx-background-color: " + hexColors1[currentColorIndex] + "; -fx-text-fill: " + textColors[currentTextIndex]);
+        btnProfile.setStyle("-fx-background-color: " + hexColors1[currentColorIndex] + "; -fx-text-fill: " + textColors[currentTextIndex]);
+        btnSettings.setStyle("-fx-background-color: " + hexColors1[currentColorIndex] + "; -fx-text-fill: " + textColors[currentTextIndex]);
+        btnRollDice.setStyle("-fx-background-color: " + hexColors1[currentColorIndex] + "; -fx-text-fill: " + textColors[currentTextIndex]);
+        btnInsertCustomRoll.setStyle("-fx-background-color: " + hexColors1[currentColorIndex] + "; -fx-text-fill: " + textColors[currentTextIndex]);
+        btnQISingleD4.setStyle("-fx-background-color: " + hexColors1[currentColorIndex]);
+        btnQISingleD6.setStyle("-fx-background-color: " + hexColors1[currentColorIndex]);
+        btnQISingleD8.setStyle("-fx-background-color: " + hexColors1[currentColorIndex]);
+        btnQISingleD10.setStyle("-fx-background-color: " + hexColors1[currentColorIndex]);
+        btnQISingleD12.setStyle("-fx-background-color: " + hexColors1[currentColorIndex]);
+        btnQISingleD20.setStyle("-fx-background-color: " + hexColors1[currentColorIndex]);
+
+        // change Background
+        windowBackground.setStyle("-fx-background-color: " + hexColorsBackground[currentColorIndex]);
+        sidePane.setStyle("-fx-background-color: " + hexColorsSidePane[currentColorIndex]);
+
+        // Fourth item
+        tbxInput.setStyle("-fx-background-color: " + hexColors3[currentColorIndex]);
+
+        // Cycle to the next color
+        currentColorIndex = (currentColorIndex + 1) % hexColors1.length;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
