@@ -2,7 +2,13 @@ package com.example.dicerollerproject;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.*;
+
 import org.junit.jupiter.api.Test;
+import java.io.File;
+
+import javafx.event.ActionEvent;
+import java.sql.*;
 
 public class DiceRollerControllerTEST {
 
@@ -51,5 +57,44 @@ public class DiceRollerControllerTEST {
         result = DiceRollerController.QIDice("6", input);
         assertEquals("2d6", result, "Should increment dice count when '1d6' is already present.");
     }
+
+
+    @Test
+    public void testSaveCustomRoll() {
+        String rollName = "TestRoll";
+        String rollFormula = "1d6+3";
+        String username = "testUser";
+
+        DatabaseConnection.SaveCustomRoll(rollName, rollFormula, username);
+        
+        // Retrieve custom rolls and ensure the saved one is in the list
+        List<String> customRolls = DatabaseConnection.GetCustomRolls(username);
+        assertTrue(customRolls.contains(rollName), "Custom roll should be saved.");
+    }
+
+    @Test
+    public void testGetCustomRollFormat() {
+        String rollName = "TestRoll";
+        String username = "testUser";
+
+        String rollFormula = DatabaseConnection.GetRollFormat(rollName, username);
+        assertEquals("1d6+3", rollFormula, "Roll formula should match the one saved.");
+    }
+
+    public class HistoryControllerTest {
+
+    @Test
+    public void testExportRollHistory() {
+        HistoryController controller = new HistoryController();
+        controller.ExportData(null); // Trigger export function
+        
+        File exportedFile = new File(System.getProperty("java.io.tmpdir"), "exported_rolls.csv");
+        assertTrue(exportedFile.exists(), "Exported file should exist.");
+        assertTrue(exportedFile.length() > 0, "Exported file should not be empty.");
+        
+        // Cleanup after test
+        exportedFile.delete();
+    }
+}
   
 }
