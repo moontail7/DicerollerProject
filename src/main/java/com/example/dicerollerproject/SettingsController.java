@@ -8,11 +8,12 @@ import javafx.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 import java.sql.ResultSet;
 
-
-
+/**
+ * The SettingsController class manages the settings page, where users can update their
+ * username and password. It interacts with the database to load and update user data.
+ */
 public class SettingsController {
 
     @FXML
@@ -24,18 +25,33 @@ public class SettingsController {
     @FXML
     private Label lblFeedback;
 
+    // Database connection instance
     private final Connection connection = DatabaseConnection.getInstance();
 
+    /**
+     * Initializes the settings page by loading the logged-in user's data.
+     * This method is called automatically when the settings page is opened.
+     */
     @FXML
     public void initialize() {
         loadUserData();
     }
 
+    /**
+     * Handles the cancel button click event, which reverts any changes made on the form
+     * and reloads the original user data.
+     * 
+     * @param event The ActionEvent triggered by the cancel button.
+     */
     public void handleCancel(ActionEvent event) {
         lblFeedback.setText("Changes cancelled.");
         loadUserData();
     }
 
+    /**
+     * Loads the user's current username and password from the database and displays
+     * them in the form. If there is no user logged in, a message is displayed.
+     */
     private void loadUserData() {
         String username = UserSession.getInstance().getLoggedInUsername();  
         if (username != null) {
@@ -45,7 +61,7 @@ public class SettingsController {
                 ResultSet rs = stmt.executeQuery();  
     
                 if (rs.next()) {
-                  // to display content - disabled
+                    // Disabled field display
                     // nameField.setText(rs.getString("loginUsername"));
                     // passField.setText(rs.getString("loginPassword"));
                 }
@@ -58,6 +74,13 @@ public class SettingsController {
         }
     }
     
+    /**
+     * Saves the updated username and password to the database. 
+     * It checks for valid input before saving and also updates any custom rolls
+     * associated with the user to reflect the new username.
+     * 
+     * @param event The ActionEvent triggered by the save button.
+     */
     public void saveUserData(ActionEvent event) {
         String newUsername = nameField.getText();  // New username from the form
         String newPassword = passField.getText();  // New password from the form
@@ -89,6 +112,14 @@ public class SettingsController {
             }
         }
     }
+
+    /**
+     * Updates the username for all custom rolls associated with the user.
+     * This ensures that custom rolls are retained when the username is changed.
+     * 
+     * @param oldUsername The original username before the update.
+     * @param newUsername The new username to be updated in custom rolls.
+     */
     private void updateCustomRollsUsername(String oldUsername, String newUsername) {
         String updateQuery = "UPDATE custom_rolls SET username = ? WHERE username = ?";
         
@@ -108,8 +139,13 @@ public class SettingsController {
         }
     }
     
-
-
+    /**
+     * Validates the username and password input fields to ensure they are not blank.
+     * 
+     * @param name The entered username.
+     * @param pass The entered password.
+     * @return true if both inputs are valid, false otherwise.
+     */
     private boolean validateInput(String name, String pass) {
         if (name.isBlank() || pass.isBlank()) {
             lblFeedback.setText("Please fill in all fields.");
