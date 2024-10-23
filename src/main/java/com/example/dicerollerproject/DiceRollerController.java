@@ -159,6 +159,11 @@ public class DiceRollerController {
         // Inputs/adds a d"20" to the tbx inout
     }
 
+    /**
+     * Adds (or incresses) a die argument with a specified dice sides number
+     * @param DiceSidesNum The amount of sides on the dice (rolls that dice once)
+     * @param tbxInputText The textbox to input/update the dice argument of
+     */
     public static String QIDice(String DiceSidesNum, String tbxInputText) {
         String Output = "";
         if (tbxInputText.contains("d" + DiceSidesNum)) {
@@ -189,6 +194,10 @@ public class DiceRollerController {
         return Output;
     }
 
+    /**
+     * Rolls (or adds) the dice roller arguments (seperated by a '+') then formulated a string output with each dice rolled, the total modifier and the total of the modifier(s) and die arguments combined
+     * @param input the string containing the complete set of dice roller arguments (to roll and/or add)
+     */
     public static String MainDiceRoller(String input) {
         String output = "Results: ";
         int total = 0;
@@ -249,6 +258,9 @@ public class DiceRollerController {
         openHistoryWindow();
     }
 
+    /**
+     * opens the history.fxml in a new window
+     */
     private void openHistoryWindow() {
         try {
             // Load the FXML file for the history window
@@ -278,6 +290,9 @@ public class DiceRollerController {
         openSettingWindow();
     }
 
+    /**
+     * opens the Settings.fxml in a new window
+     */
     private void openSettingWindow() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(
@@ -299,8 +314,8 @@ public class DiceRollerController {
     /////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////// PROFILE STUFF
-    ///////////////////////////////////////////////////////////////////////////////////// /////////////////////////////////////////
+    /////////////////////////////// PROFILE STUFF ///////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////
@@ -333,8 +348,9 @@ public class DiceRollerController {
 
 }
 
-    
-
+    /**
+     * returns a string that welcomes the logged in user
+     */
     public void showLoggedinUser(String username) {
         lblUsername.setText("Welcome: \n"  + username); // Display the logged-in username
     }
@@ -345,14 +361,17 @@ public class DiceRollerController {
     /////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////// SOUND STUFF
-    ///////////////////////////////////////////////////////////////////////////////////// /////////////////////////////////////
+    ////////////////////////////////// SOUND STUFF  /////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////
 
     /// SOUND STUFF /////// POSSIBLY MOVE TO A NEW CONTROLLER FILE
 
+    /**
+     * Attempts to play a sound when you win (1% chance every time you roll)
+     */
     private void bonusTrumpet() {
         try {
             String filename = "win.wav";
@@ -368,6 +387,9 @@ public class DiceRollerController {
         }
     }
 
+    /**
+     * Rolls a number to play a random sound (from 9 similar sounds) of rolling dice
+     */
     @FXML
     private void playSound() {
         // method to play a sound
@@ -400,49 +422,7 @@ public class DiceRollerController {
         }
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////
-
-    /// OLD STUFF /////// POSSIBLY MOVE TO A NEW CONTROLLER FILE / DELETE
-
-    // test rolling a 6 sided die with button
-    public void rollSixSided() {
-        Random random = new Random();
-        roll = random.nextInt(6) + 1; // roll a number between 1 and 6
-        sayDice(roll);
-        playSound();
-    }
-
-    // Method to display the rolled dice value
-    private void sayDice(int roll) {
-        lblRollText.setText("You rolled a " + roll + "!");
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////
-
     ///// custom rolls///// custom rolls
-    ///// custom rolls///// custom rolls///// custom rolls///// custom rolls/////
-    ///// custom rolls///// custom rolls
-    ///// custom rolls///// custom rolls
-    ///// custom rolls///// custom rolls
-    ///// custom rolls///// custom rolls
-    ///// custom rolls///// custom rolls
-    ///// custom rolls///// custom rolls
-    ///// custom rolls///// custom rolls
-
     @FXML
     public void initialize() {
         loadCustomRollsIntoComboBox();
@@ -534,15 +514,15 @@ public class DiceRollerController {
 
     // Define an array of colors
     // Secondary items
-    private String[] hexColors2 = {"#A65C48", "#884879", "#5A8CB1", "#BEE60F", "#58a562", "#660505"};
+    private String[] hexColors2 = {"#A65C48", "#884879", "#5A8CB1", "#BEE60F", "#58a562", "#660505", "#33a31d"};
     // Third items
-    private String[] hexColors1 = {"#A73C24", "#A7288A", "#3498DB", "#adf10f", "#d1dbc6", "#870606"};
-    private String[] textColors = {"#FFFFFF", "#FFFFFF", "#FF0000", "#0000FF", "#FF0000", "#FFFFFF"};
+    private String[] hexColors1 = {"#A73C24", "#A7288A", "#3498DB", "#adf10f", "#d1dbc6", "#870606", "#33a31d"};
+    private String[] textColors = {"#FFFFFF", "#FFFFFF", "#FF0000", "#0000FF", "#FF0000", "#FFFFFF", "black"};
     // Fourth colour
-    private String[] hexColors3 = {"#805E50", "#785871", "#937972", "#CFDB0F", "#95C094", "#412929"};
+    private String[] hexColors3 = {"#805E50", "#785871", "#937972", "#CFDB0F", "#95C094", "#412929", "#33a31d"};
     // Background colours
-    private String[] hexColorsBackground = {"#73695E", "#28A745", "#CC6633", "#F1C40F", "#ffffff", "#343434"};
-    private String[] hexColorsSidePane = {"#A74C36", "#884879", "#5A8CB1", "#F1C40F", "#ffffff", "#870606"};
+    private String[] hexColorsBackground = {"#73695E", "#28A745", "#CC6633", "#F1C40F", "#ffffff", "#343434", "linear-gradient(to right, #0d1c5d, #891215);"};
+    private String[] hexColorsSidePane = {"#A74C36", "#884879", "#5A8CB1", "#F1C40F", "#ffffff", "#870606", "black"};
 
     // Counters
     private int currentColorIndex = 0;
@@ -581,18 +561,4 @@ public class DiceRollerController {
         // Cycle to the next color
         currentColorIndex = (currentColorIndex + 1) % hexColors1.length;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
