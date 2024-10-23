@@ -66,6 +66,10 @@ public class DiceRollerController {
     // Clear the dice input field
 
     @FXML
+    private Button btnLogout;
+
+
+    @FXML
     private Button btnRollSingleDie;
     // btn used to roll a single d6
 
@@ -271,29 +275,19 @@ public class DiceRollerController {
 
     @FXML
     public void btnSettingsClick(ActionEvent actionEvent) {
-        // Open the history window
         openSettingWindow();
     }
 
     private void openSettingWindow() {
         try {
-            // Load the FXML file for the Setting window
             FXMLLoader fxmlLoader = new FXMLLoader(
                     getClass().getResource("/com/example/dicerollerproject/Settings.fxml"));
 
-            // Load the Parent node from FXML
+            
             Parent root = fxmlLoader.load();
-
-            // Create a new Stage
             Stage stage = new Stage();
-
-            // Set the title of the window
             stage.setTitle("Settings");
-
-            // Set the scene with the loaded FXML
             stage.setScene(new Scene(root));
-
-            // Show the new window
             stage.show();
 
         } catch (IOException e) {
@@ -322,9 +316,30 @@ public class DiceRollerController {
         }
     }
 
+    @FXML
+    public void btnLogoutClick(ActionEvent actionEvent) {
+        // Logout the user
+        UserSession.getInstance().setLoggedInUsername(null);
+        // Close the current window
+        Stage stage = (Stage) btnLogout.getScene().getWindow();
+        stage.close();
+
+        // Open the login window
+        try {
+            Main.showLoginScene();
+        } catch (IOException e) {
+            e.printStackTrace();
+    }
+
+}
+
+    
+
     public void showLoggedinUser(String username) {
         lblUsername.setText("Welcome: \n"  + username); // Display the logged-in username
     }
+
+
 
     /////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////

@@ -10,58 +10,59 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dicerollerproject.ProfileController">
+<BorderPane prefHeight="434.0" prefWidth="600.0" stylesheets="@styles2.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dicerollerproject.ProfileController">
     <!-- Top area for the page title -->
     <top>
         <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
-            <Label styleClass="label-title" text="Profile Page">
-            <font>
-               <Font size="18.0" />
-            </font></Label>
+         <Pane prefHeight="50.0" prefWidth="601.0">
+            <children>
+                  <!-- Apply title styling -->
+                  <Label layoutX="126.0" layoutY="11.0" styleClass="label-title" text="Custom Rolls">
+                      <font>
+                          <Font size="18.0" />
+                      </font>
+                  </Label>
+            </children>
+         </Pane>
         </HBox>
     </top>
+
     <!-- Center area for profile details -->
     <center>
-        <VBox alignment="CENTER" spacing="10.0">
-            <Pane prefHeight="385.0" prefWidth="600.0">
-                <children>
-                    <!-- Welcome Person Label -->
-                    <VBox layoutX="20.0" layoutY="36.0">
-                        <children>
-                            <Label fx:id="lblUsername" contentDisplay="CENTER" maxWidth="600" prefHeight="43.0" prefWidth="251.0" text=" " textAlignment="CENTER">
-                        <font>
-                           <Font name="System Bold Italic" size="18.0" />
-                        </font></Label>
-                     <Label fx:id="lblUsername1" alignment="BOTTOM_LEFT" contentDisplay="CENTER" maxWidth="600" prefHeight="43.0" prefWidth="115.0" text="Custom Rolls:" textAlignment="CENTER">
-                        <font>
-                           <Font size="18.0" />
-                        </font>
-                     </Label>
-                        </children>
-                    </VBox>
-                    <!-- Custom Rolls Area -->
-                    <VBox layoutX="20.0" layoutY="120.0" spacing="10">
-                        <HBox spacing="10">
-                            <TextField fx:id="tbxRollName" promptText="Enter Roll Name" />
-                            <TextField fx:id="tbxRollFormula" promptText="Enter Roll Formula (e.g., 2d6+3)" />
-                            <Button fx:id="btnSaveCustomRoll" onAction="#saveCustomRollClick" text="Save Custom Roll" />
-                           
-
-                        </HBox>
-<ListView fx:id="listCustomRolls" prefHeight="200.0" prefWidth="150.0" />
-                    </VBox>
-                    <!-- Profile Actions -->
-                    <VBox layoutX="20.0" layoutY="280.0" spacing="10">
-                        <!-- <Button text="Settings" onAction="#btnSettingsClick"/>
-                        <Button text="Logout" onAction="#logoutClick"/> -->
-                    </VBox>
-                </children>
-            </Pane>
+        <VBox alignment="CENTER" spacing="20.0">
+         <Pane>
+            <children>
+                  <!-- Welcome Person Label -->
+                  <Label fx:id="lblUsername" contentDisplay="CENTER" layoutX="14.0" layoutY="15.0" maxWidth="600" prefHeight="43.0" prefWidth="251.0" text=" " textAlignment="CENTER">
+                      <font>
+                          <Font name="System Bold Italic" size="18.0" />
+                      </font>
+                  </Label>
+            </children>
+         </Pane>
+            
+            <!-- Custom Rolls Input Section -->
+            <HBox alignment="CENTER" spacing="10">
+                <TextField fx:id="tbxRollName" promptText="Enter Roll Name" styleClass="textfield-green" />
+                <TextField fx:id="tbxRollFormula" promptText="Enter Roll Formula (e.g., 2d6+3)" styleClass="textfield-green">
+               <font>
+                  <Font name="Baskerville Old Face" size="12.0" />
+               </font></TextField>
+                <Button fx:id="btnSaveCustomRoll" onAction="#saveCustomRollClick" styleClass="button" text="Save Roll" />
+            </HBox>
+            
+            <!-- ListView for displaying custom rolls -->
+            <ListView fx:id="listCustomRolls" prefHeight="200.0" prefWidth="150.0" />
         </VBox>
     </center>
-    <!-- Bottom area -->
+
+    <!-- Bottom area with Close Button -->
     <bottom>
-        <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER" />
-                    <Button fx:id="closeButton" onAction="#closeHistoryWindow" styleClass="button-close" text="Close" />
+      <Pane BorderPane.alignment="CENTER">
+         <children>
+              <HBox alignment="CENTER" prefHeight="52.0" prefWidth="14.0" spacing="10.0" />
+               <Button fx:id="closeButton" layoutX="269.0" layoutY="3.0" onAction="#closeHistoryWindow" prefHeight="0.0" prefWidth="67.0" styleClass="button-close" text="Close" />
+         </children>
+      </Pane>
     </bottom>
 </BorderPane>

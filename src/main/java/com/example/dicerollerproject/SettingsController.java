@@ -73,8 +73,11 @@ public class SettingsController {
     
                 int updatedRows = stmt.executeUpdate();
                 if (updatedRows > 0) {
+                    // Update custom rolls tied to the original username
+                    updateCustomRollsUsername(originalUsername, newUsername);
+    
                     lblFeedback.setText("User data updated successfully!");
-                    // give new username
+                    // Set the new username in session
                     UserSession.getInstance().setLoggedInUsername(newUsername);
                 } else {
                     lblFeedback.setText("No changes were made.");
@@ -84,6 +87,24 @@ public class SettingsController {
                 lblFeedback.setText("Error updating user data: " + e.getMessage());
                 e.printStackTrace();
             }
+        }
+    }
+    private void updateCustomRollsUsername(String oldUsername, String newUsername) {
+        String updateQuery = "UPDATE custom_rolls SET username = ? WHERE username = ?";
+        
+        try (PreparedStatement stmt = connection.prepareStatement(updateQuery)) {
+            stmt.setString(1, newUsername);
+            stmt.setString(2, oldUsername);
+    
+            int updatedRows = stmt.executeUpdate();
+            if (updatedRows > 0) {
+                System.out.println("Custom rolls updated to new username successfully.");
+            } else {
+                System.out.println("No custom rolls needed updating.");
+            }
+        } catch (SQLException e) {
+            lblFeedback.setText("Error updating custom rolls: " + e.getMessage());
+            e.printStackTrace();
         }
     }
     

@@ -4,7 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.event.ActionEvent;
+
+
 
 import java.io.IOException;
 import java.sql.*;
@@ -23,7 +27,28 @@ public class LoginController {
 
     //create priv connection to DB
     private final Connection connection = DatabaseConnection.getInstance();
-    
+
+@FXML
+public void initialize() {
+    // Trigger login when Enter is pressed in the username or password field
+    btnLogin.sceneProperty().addListener((obs, oldScene, newScene) -> {
+        if (newScene != null) {
+            newScene.setOnKeyPressed(event -> {
+                // Check focused before performing an action
+                if (event.getCode() == KeyCode.ENTER) {
+                    if (newScene.getFocusOwner() == tbxInputUsername || newScene.getFocusOwner() == tbxInputPassword) {
+                        btnLogin(new ActionEvent()); 
+                    }
+                }
+              
+                if (event.getCode() == KeyCode.L && event.isControlDown()) {
+                    btnLogin(new ActionEvent()); 
+                }
+            });
+        }
+    });
+}
+
 
     @FXML
     public void btnLogin(ActionEvent actionEvent) {
