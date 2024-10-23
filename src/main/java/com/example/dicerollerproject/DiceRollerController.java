@@ -409,20 +409,6 @@ public class DiceRollerController {
     /////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////
 
-    /// OLD STUFF /////// POSSIBLY MOVE TO A NEW CONTROLLER FILE / DELETE
-
-    // test rolling a 6 sided die with button
-    public void rollSixSided() {
-        Random random = new Random();
-        roll = random.nextInt(6) + 1; // roll a number between 1 and 6
-        sayDice(roll);
-        playSound();
-    }
-
-    // Method to display the rolled dice value
-    private void sayDice(int roll) {
-        lblRollText.setText("You rolled a " + roll + "!");
-    }
 
     /////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////
@@ -434,7 +420,8 @@ public class DiceRollerController {
     /////////////////////////////////////////////////////////////////////////////////////
 
     ///// custom rolls///// custom rolls
-    ///// custom rolls///// custom rolls///// custom rolls///// custom rolls/////
+    ///// custom rolls///// custom rolls
+    ///// custom rolls///// custom rolls/////
     ///// custom rolls///// custom rolls
     ///// custom rolls///// custom rolls
     ///// custom rolls///// custom rolls

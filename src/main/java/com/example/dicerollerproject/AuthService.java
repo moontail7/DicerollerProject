@@ -5,11 +5,24 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * The AuthService class handles user authentication, including validation of credentials,
+ * checking for existing usernames, and registering new users in the database.
+ */
 public class AuthService {
 
+    // Database connection instance from DatabaseConnection class
     private final Connection connection = DatabaseConnection.getInstance();
 
-    // Validate user credentials
+    /**
+     * Validates user credentials by checking if the provided username and password
+     * match a record in the database.
+     * 
+     * @param username The username entered by the user.
+     * @param password The password entered by the user.
+     * @return true if the credentials are valid (i.e., a matching record exists), false otherwise.
+     * @throws SQLException If a database access error occurs.
+     */
     public boolean isUserValid(String username, String password) throws SQLException {
         try (PreparedStatement stmt = connection.prepareStatement("SELECT * FROM loginAccountDetails WHERE loginUsername = ? AND loginPassword = ?")) {
             stmt.setString(1, username);
@@ -19,7 +32,13 @@ public class AuthService {
         }
     }
 
-    // Check if a username already exists
+    /**
+     * Checks if a user with the given username already exists in the database.
+     * 
+     * @param username The username to check for.
+     * @return true if the username exists, false otherwise.
+     * @throws SQLException If a database access error occurs.
+     */
     public boolean doesUserExist(String username) throws SQLException {
         try (PreparedStatement stmt = connection.prepareStatement("SELECT * FROM loginAccountDetails WHERE loginUsername = ?")) {
             stmt.setString(1, username);
@@ -28,7 +47,13 @@ public class AuthService {
         }
     }
 
-    // Register a new user
+    /**
+     * Registers a new user by inserting the provided username and password into the database.
+     * 
+     * @param username The username to register.
+     * @param password The password associated with the username.
+     * @throws SQLException If a database access error occurs or the insert operation fails.
+     */
     public void registerUser(String username, String password) throws SQLException {
         try (PreparedStatement stmt = connection.prepareStatement("INSERT INTO loginAccountDetails (loginUsername, loginPassword) VALUES (?, ?)")) {
             stmt.setString(1, username);
@@ -38,8 +63,7 @@ public class AuthService {
     }
 }
 
-
-
+// Below are the older versions of the methods with comments, kept for reference:
 
 // private boolean isUserValid(String username, String password) {
 //     //check if the entered username matches any DB entry

@@ -8,77 +8,91 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.event.ActionEvent;
 
-
-
-
 import java.io.IOException;
 import java.sql.*;
 
+/**
+ * The LoginController class handles the login and registration functionality for the user.
+ * It interacts with the AuthService to validate login credentials or register new users,
+ * and provides feedback through a label.
+ */
 public class LoginController {
-    //text boxes for username and password inputs respectively
+    // Text boxes for username and password inputs respectively
     @FXML private TextField tbxInputUsername;
     @FXML private TextField tbxInputPassword;
-    //button to login and register respectively
+    // Buttons for login and registration
     @FXML private Button btnLogin;
     @FXML private Button btnRegister;
-    //initial instructions and feedback in case of errors
+    // Label to display instructions and feedback for errors
     @FXML private Label lblInstructions;
-    //hold da user
-    // @FXML private Label lblWelcome;
 
-    //create priv connection to DB
+    // Database connection
     private final Connection connection = DatabaseConnection.getInstance();
 
-    // connection to auth service functions
+    // AuthService instance for handling authentication-related logic
     private final AuthService authService = new AuthService();
 
-@FXML
-public void initialize() {
-    // Trigger login when Enter is pressed in the username or password field
-    btnLogin.sceneProperty().addListener((obs, oldScene, newScene) -> {
-        if (newScene != null) {
-            newScene.setOnKeyPressed(event -> {
-                // Check focused before performing an action
-                if (event.getCode() == KeyCode.ENTER) {
-                    if (newScene.getFocusOwner() == tbxInputUsername || newScene.getFocusOwner() == tbxInputPassword) {
+    /**
+     * Initializes the controller. Sets up event listeners to trigger the login
+     * when the Enter key is pressed or a keyboard shortcut (Ctrl + L) is used.
+     */
+    @FXML
+    public void initialize() {
+        // Trigger login when Enter is pressed in the username or password field
+        btnLogin.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null) {
+                newScene.setOnKeyPressed(event -> {
+                    // Check focused before performing an action
+                    if (event.getCode() == KeyCode.ENTER) {
+                        if (newScene.getFocusOwner() == tbxInputUsername || newScene.getFocusOwner() == tbxInputPassword) {
+                            btnLogin(new ActionEvent()); 
+                        }
+                    }
+                    if (event.getCode() == KeyCode.L && event.isControlDown()) {
                         btnLogin(new ActionEvent()); 
                     }
-                }
-              
-                if (event.getCode() == KeyCode.L && event.isControlDown()) {
-                    btnLogin(new ActionEvent()); 
-                }
-            });
-        }
-    });
-}
+                });
+            }
+        });
+    }
 
+    /**
+     * Handles the login button click. Validates the input and checks the credentials
+     * through the AuthService. If valid, opens the main application window.
+     * 
+     * @param actionEvent The action event triggered by clicking the login button.
+     */
     @FXML
     public void btnLogin(ActionEvent actionEvent) {
-
-        //Login Button behaviour
-        // init input strings
+        // Login Button behaviour
         String enteredUsername = tbxInputUsername.getText();
         String enteredPassword = tbxInputPassword.getText();
-        // run validation methods on input
+
+        // Run validation on input
         if (validateInput(enteredUsername, enteredPassword)) {
             try {
                 if (authService.isUserValid(enteredUsername, enteredPassword)) {
                     lblInstructions.setText("Login Success. Opening the Dice Roller app...");
-                    //pass the username to the UserSession class
+                    // Pass the username to the UserSession class
                     UserSession.getInstance().setLoggedInUsername(enteredUsername);
-                     //close the login window
+                    // Close the login window
                     btnLogin.getScene().getWindow().hide();
                     openMainWindow();
                 } else {
                     lblInstructions.setText("Invalid username or password. Please try again.");
                 }
             } catch (SQLException e) {
-                lblInstructions.setText("Error during login: " + e.getMessage()  + ".\nPlease Try again.");
+                lblInstructions.setText("Error during login: " + e.getMessage() + ".\nPlease Try again.");
             }
         }
     }
 
+    /**
+     * Handles the registration button click. Checks if the username exists,
+     * and if not, registers the new user via the AuthService.
+     * 
+     * @param actionEvent The action event triggered by clicking the register button.
+     */
     @FXML
     public void btnRegister(ActionEvent actionEvent) {
         String enteredUsername = tbxInputUsername.getText();
@@ -98,27 +112,31 @@ public void initialize() {
         }
     }
 
+    /**
+     * Validates the username and password input to ensure they are not blank.
+     * 
+     * @param username The username entered by the user.
+     * @param password The password entered by the user.
+     * @return true if both inputs are valid, false otherwise.
+     */
     private boolean validateInput(String username, String password) {
-        // reusable validation method 
-        // can add more checks than just blank checks here TODO:: add more checks
+        // Reusable validation method
         if (username.isBlank() || password.isBlank()) {
             lblInstructions.setText("Please enter a non-null username & password.");
             return false;
         }
         return true;
     }
-                
 
-
-    //method to show main window
+    /**
+     * Opens the main window of the application after a successful login.
+     */
     private void openMainWindow() {
         try {
-            Main.showMainScene(UserSession.getInstance().getLoggedInUsername()); 
+            Main.showMainScene(UserSession.getInstance().getLoggedInUsername());
         } catch (IOException e) {
             lblInstructions.setText("Error opening main window: " + e.getMessage());
             e.printStackTrace();
         }
     }
-
-    
 }
