@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -10,7 +9,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 <BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dicerollerproject.DiceRollerController">
     <!-- Center VBox content -->
     <center>
@@ -44,12 +42,11 @@
                     <Insets top="60.0" />
                 </padding>
             </HBox>
-
-             <!-- Add ComboBox for custom rolls -->
-<HBox alignment="CENTER" spacing="10">
-<ComboBox fx:id="cmbCustomRolls" promptText="Select Custom Roll" />
- <Button fx:id="btnInsertCustomRoll" onAction="#InsertCustomRoll" text="Insert Roll" />
-</HBox>
+            <!-- Add ComboBox for custom rolls -->
+            <HBox alignment="CENTER" spacing="10">
+                <ComboBox fx:id="cmbCustomRolls" promptText="Select Custom Roll" />
+                <Button fx:id="btnInsertCustomRoll" onAction="#InsertCustomRoll" text="Insert Roll" />
+            </HBox>
             <Label fx:id="lblRollText" maxWidth="614.0" onMouseClicked="#btnClearDicef" prefHeight="100.0" prefWidth="614.0" styleClass="label-yellow" text="Roll to start" textAlignment="CENTER" wrapText="true" />
         </VBox>
     </center>
@@ -61,9 +58,9 @@
                     <children>
                         <!-- Welcome Person Label -->
                         <Label fx:id="lblUsername" alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="91.0" maxWidth="600" prefHeight="61.0" prefWidth="115.0" text=" " textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold Italic" size="20.0" />
-                     </font>
+                            <font>
+                                <Font name="System Bold Italic" size="20.0" />
+                            </font>
                         </Label>
                         <!-- all the buttons in the pane and their  directions -->
                         <Button fx:id="modeButton" alignment="CENTER" layoutX="11.0" layoutY="413.0" mnemonicParsing="false" onAction="#modeButtonClicked" prefHeight="41.0" prefWidth="108.0" stylesheets="@styles2.css" text="Mode" />
@@ -72,7 +69,6 @@
                         <!-- ^^ onAction envokes function to go to profile window defined in dicerollercontroller -->
                         <Button fx:id="btnSettings" alignment="CENTER" layoutX="10.0" layoutY="227.0" mnemonicParsing="false" onAction="#btnSettingsClick" prefHeight="41.0" prefWidth="110.0" stylesheets="@styles2.css" text="Settings" />
                         <Button fx:id="btnLogout" layoutX="47.0" layoutY="546.0" onAction="#btnLogoutClick" text="Logout" />
-
                     </children>
                 </Pane>
             </children>
