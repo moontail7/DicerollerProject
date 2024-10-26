@@ -325,7 +325,7 @@ public class DiceRollerController {
     @FXML
     public void showProfileWindow(ActionEvent event) { 
         try {
-            Main.showProfileWindow(UserSession.getInstance().getLoggedInUsername());
+            Main.showProfileWindow();
         } catch (IOException e) {
             e.printStackTrace();
         }

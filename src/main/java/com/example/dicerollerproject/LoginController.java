@@ -133,7 +133,7 @@ public class LoginController {
      */
     private void openMainWindow() {
         try {
-            Main.showMainScene(UserSession.getInstance().getLoggedInUsername());
+            Main.showMainScene();
         } catch (IOException e) {
             lblInstructions.setText("Error opening main window: " + e.getMessage());
             e.printStackTrace();

@@ -12,54 +12,55 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="402.0" prefWidth="517.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dicerollerproject.SettingsController">
+<BorderPane prefHeight="402.0" prefWidth="517.0" stylesheets="@styles2.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dicerollerproject.SettingsController">
     <top>
-        <VBox spacing="10" BorderPane.alignment="TOP_LEFT">
-            <Label style="-fx-font-size: 24px; -fx-font-family: 'Serif'; -fx-text-fill: black;" text="Settings" />
-            <Label style="-fx-font-size: 14px; -fx-text-fill: gray;" text="Manage your account settings and preferences" />
-            <Label fx:id="lblFeedback" text="Feedback goes here" />
-        </VBox>
+        <Pane prefHeight="85.0" prefWidth="517.0" BorderPane.alignment="TOP_LEFT">
+            <children>
+                <VBox layoutX="23.0" spacing="10">
+                    <Label styleClass="label-title">
+                        <font>
+                            <Font name="Agency FB" size="12.0" />
+                        </font>
+                    </Label>
+ <Label style="-fx-font-size: 14px; -fx-text-fill: gray;" text="Manage your account settings and preferences" />
+                  <Label fx:id="lblFeedback" />
+                </VBox>
+            </children>
+        </Pane>
     </top>
 
     <center>
-        <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+        <TabPane fx:id="tabPane" styleClass="tab-pane" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-                <Tab text="MY AVATAR" />
-                <Tab text="PERSONAL DETAILS">
-                    <VBox fx:id="personalDetailsPane" alignment="TOP_LEFT" spacing="10">
-                        <GridPane hgap="20" vgap="10">
-                            <Label text="NAME:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                            <TextField fx:id="nameField" promptText="Enter your name" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                            <Label text="PASSWORD:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                            <TextField fx:id="passField" promptText="Enter your password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                     <columnConstraints>
-                        <ColumnConstraints />
-                        <ColumnConstraints />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints />
-                        <RowConstraints />
-                     </rowConstraints>
-                        </GridPane>
+                <Tab styleClass="tab" text="PERSONAL DETAILS">
+                    <VBox fx:id="personalDetailsPane" alignment="TOP_LEFT" spacing="10" styleClass="vbox-background">
+                        <Pane prefHeight="249.0" prefWidth="517.0">
+                            <children>
+                                <GridPane hgap="20" layoutX="24.0" layoutY="65.0" vgap="10">
+                                    <Label styleClass="label-yellow" text="Change name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                    <TextField fx:id="nameField" promptText="Enter your name" styleClass="textfield-green" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                    <columnConstraints>
+                                        <ColumnConstraints />
+                                        <ColumnConstraints />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints maxHeight="50.0" minHeight="11.0" prefHeight="24.0" />
+                                        <RowConstraints maxHeight="39.0" minHeight="0.0" prefHeight="26.0" />
+                                    </rowConstraints>
+                                </GridPane>
+                                 <Label layoutX="26.0" layoutY="109.0" styleClass="label-yellow" text="Change pass:" />
+                                 <TextField fx:id="passField" layoutX="183.0" layoutY="109.0" promptText="Enter your password" styleClass="textfield-green" />
+                            </children>
+                        </Pane>
                         <HBox alignment="BOTTOM_RIGHT" spacing="10">
-                            <Button fx:id="cancelButton" onAction="#handleCancel" text="Cancel" />
-                            <Button fx:id="saveButton" onAction="#saveUserData" text="Save" />
+                            <Button fx:id="closeButton" onAction="#handleCancel" styleClass="button-close" text="Close" />
+                            <Button fx:id="saveButton" onAction="#saveUserData" styleClass="button" text="Save" />
                         </HBox>
                     </VBox>
                 </Tab>
             </tabs>
         </TabPane>
     </center>
-   <right>
-        <VBox fx:id="menu" prefHeight="317.0" prefWidth="102.0" spacing="20" style="-fx-background-color: #2F4F4F;" BorderPane.alignment="CENTER">
-         <Pane prefHeight="324.0" prefWidth="102.0">
-            <children>
-                  <Label layoutX="20.0" layoutY="278.0" style="-fx-text-fill: white; -fx-font-size: 16px;" text="LOGOUT" />
-            </children>
-         </Pane>
-        </VBox>
-   </right>
-
-    
 </BorderPane>

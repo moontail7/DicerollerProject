@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,6 +19,8 @@ public class SettingsController {
 
     @FXML
     private TextField nameField, passField;
+
+    @FXML private Button closeButton;
 
     @FXML
     private Button cancelButton, saveButton;
@@ -43,10 +46,14 @@ public class SettingsController {
      * 
      * @param event The ActionEvent triggered by the cancel button.
      */
+    @FXML
     public void handleCancel(ActionEvent event) {
-        lblFeedback.setText("Changes cancelled.");
-        loadUserData();
+            // REUSED FOR PROFILE WINDOW
+            Stage stage = (Stage) closeButton.getScene().getWindow();
+            stage.close();
     }
+
+
 
     /**
      * Loads the user's current username and password from the database and displays
