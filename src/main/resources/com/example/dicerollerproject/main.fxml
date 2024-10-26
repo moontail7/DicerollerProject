@@ -70,7 +70,10 @@
                         <Button fx:id="btnProfile" alignment="CENTER" layoutX="9.0" layoutY="361.0" mnemonicParsing="false" onAction="#showProfileWindow" prefHeight="41.0" prefWidth="110.0" stylesheets="@styles2.css" text="Profile" />
                         <!-- ^^ onAction envokes function to go to profile window defined in dicerollercontroller -->
                         <Button fx:id="btnSettings" alignment="CENTER" layoutX="9.0" layoutY="314.0" mnemonicParsing="false" onAction="#btnSettingsClick" prefHeight="41.0" prefWidth="110.0" stylesheets="@styles2.css" text="Settings" />
-                        <Button fx:id="btnLogout" layoutX="28.0" layoutY="545.0" onAction="#btnLogoutClick" stylesheets="@styles.css" text="Logout" />
+                        <Button fx:id="btnLogout" layoutX="28.0" layoutY="545.0" onAction="#btnLogoutClick" stylesheets="@styles2.css" text="Logout" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font></Button>
                         <Button fx:id="btnClearDicef" layoutX="12.0" layoutY="176.0" onAction="#btnClearDicef" styleClass="button" stylesheets="@styles2.css" text="Clear Dice" />
 
                     </children>
