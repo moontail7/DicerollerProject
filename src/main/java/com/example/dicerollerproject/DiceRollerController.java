@@ -104,6 +104,14 @@ public class DiceRollerController {
     /////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////
 
+
+
+    /**
+ * Handles the event when the "Roll Dice" button is clicked.
+ * It attempts to roll the dice based on the input string, updates the result label,
+ * and plays a rolling sound.
+ */
+
     @FXML
     public void btnRollDiceClick() {
 
@@ -153,7 +161,24 @@ public class DiceRollerController {
         // Inputs/adds a d"20" to the tbx inout
     }
 
-    public void btnClearDicef(MouseEvent mouseEvent) {
+
+    /**
+ * Clears the dice input field when the "Clear" button is clicked.
+ * This method can handle both mouse and action events.
+ *
+ * @param mouseEvent The mouse event triggered by clicking the result pane.
+ */
+    
+    public void btnClearMicef(MouseEvent mouseEvent) {
+        // btn Event to add "1d20" to the tbxInput text field
+        tbxInput.setText("");
+        // Inputs/adds a d"20" to the tbx inout
+    }
+
+
+    // actual button version
+
+    public void btnClearDicef(ActionEvent event) {
         // btn Event to add "1d20" to the tbxInput text field
         tbxInput.setText("");
         // Inputs/adds a d"20" to the tbx inout
