@@ -67,7 +67,7 @@
                         <!-- all the buttons in the pane and their  directions -->
                         <Button fx:id="modeButton" alignment="CENTER" layoutX="10.0" layoutY="463.0" mnemonicParsing="false" onAction="#modeButtonClicked" prefHeight="41.0" prefWidth="108.0" stylesheets="@styles2.css" text="Mode" />
                         <Button fx:id="btnhistory" alignment="CENTER" layoutX="11.0" layoutY="411.0" mnemonicParsing="false" onAction="#btnhistoryClicked" prefHeight="41.0" prefWidth="109.0" stylesheets="@styles2.css" text="History" />
-                        <Button fx:id="btnProfile" alignment="CENTER" layoutX="9.0" layoutY="361.0" mnemonicParsing="false" onAction="#showProfileWindow" prefHeight="41.0" prefWidth="110.0" stylesheets="@styles2.css" text="Profile" />
+                        <Button fx:id="btnProfile" alignment="CENTER" layoutX="9.0" layoutY="361.0" mnemonicParsing="false" onAction="#showProfileWindow" prefHeight="41.0" prefWidth="110.0" stylesheets="@styles2.css" text="Custom" />
                         <!-- ^^ onAction envokes function to go to profile window defined in dicerollercontroller -->
                         <Button fx:id="btnSettings" alignment="CENTER" layoutX="9.0" layoutY="314.0" mnemonicParsing="false" onAction="#btnSettingsClick" prefHeight="41.0" prefWidth="110.0" stylesheets="@styles2.css" text="Settings" />
                         <Button fx:id="btnLogout" layoutX="28.0" layoutY="545.0" onAction="#btnLogoutClick" stylesheets="@styles2.css" text="Logout" textAlignment="CENTER">
